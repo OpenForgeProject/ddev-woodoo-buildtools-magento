@@ -10,6 +10,10 @@
 source ".ddev/commands/web/woodoo_components/variables"
 
 echo -e "🛠️  ${bldblu}DDEV Woodoo Frontend Buildtools $WOODOO_VERSION for Magento${txtrst}"
+if [ "$WOODOO_VERSION" != "$LATEST_WOODOO_VERSION" ]; then
+    echo -e "🛠️  ${bldylw}Version $LATEST_WOODOO_VERSION available!${txtrst}"
+    echo -e "   ${txtylw}Install update with:   ${txtcyn}ddev get https://github.com/dermatz/ddev-woodoo-buildtools-magento/archive/refs/tags/$LATEST_WOODOO_VERSION.tar.gz${txtrst}"
+fi
 
 source ".ddev/commands/web/woodoo_components/checks"
 source ".ddev/commands/web/woodoo_components/themes"
