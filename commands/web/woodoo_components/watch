@@ -100,9 +100,16 @@ if [[ "$1" == "watch" && "$2" == "" || "$1" == "w" && "$2" == "" ]]; then
     readThemesInConfig
 
     # Read all themes in config.yaml
+    # Show all available themes in config.yaml
 
-     # Show all available themes in config.yaml
-    if [[ $(countThemesinConfig) == 1 ]]; then
+    if [[ $(countThemesinConfig) -lt 1 ]]; then
+
+        echo -e "${txtred}No Theme available to build${txtrst}\n"
+        echo -e "${txtgrn}Add a Theme to config.yaml${txtrst}\n"
+
+        addThemesToConfig
+
+    elif [[ $(countThemesinConfig) == 1 ]]; then
         echo -e "\n${txtgrn}$(countThemesinConfig)${txtcyn} Theme is ready to watch:${txtrst}"
         for THEME_CODE in $THEMES_IN_CONFIG; do
 
