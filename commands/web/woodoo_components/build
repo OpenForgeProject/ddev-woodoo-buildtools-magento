@@ -99,9 +99,12 @@ if [[ "$1" == "build" && "$2" == "" || "$1" == "b" && "$2" == "" ]]; then
 
     # Show all available themes in config.yaml
     if [[ $(countThemesinConfig) -lt 1 ]]; then
+
         echo -e "${txtred}No Theme available to build${txtrst}\n"
         echo -e "${txtgrn}Add a Theme to config.yaml${txtrst}\n"
+
         addThemesToConfig
+
     elif [[ $(countThemesinConfig) == 1 ]]; then
        echo -e "${txtgrn}$(countThemesinConfig) Theme available to build${txtrst}\n"
     else
