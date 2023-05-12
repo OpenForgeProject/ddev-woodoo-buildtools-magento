@@ -29,7 +29,7 @@ function buildMagentoDefault() {
 
     # check if grunt exist
     if [[ ! -f "./node_modules/.bin/grunt" ]]; then
-        echo -e "${txtcyn}${ICON_ERROR} Install missing Grunt${txtrst}"
+        echo -e "\n\n${txtcyn}${ICON_ERROR} Install missing Grunt${txtrst}\n\n"
         npm install grunt
         npm install grunt -g
         if [[ ! -f "./node_modules/.bin/grunt" ]]; then
@@ -45,8 +45,11 @@ function buildMagentoDefault() {
     # check if grunt task was successful
     if [[ $? -eq 0 ]]; then
         echo -e "${txtgrn}${ICON_SUCCESS} Grunt tasks finished${txtrst}\n\n"
+        clearCache
+        clearStaticFiles
+        echo -e "\n${txtgrn}${ICON_SUCCESS}${bldcyn} Theme Build for ${txtpur}$THEME_NAME${txtcyn} finished${txtrst}\n\n\n"
     else
-        echo -e "${txtred}${ICON_ERROR} Grunt task failed. Try to repair it for you.${txtrst}"
+        echo -e "\n\n${txtred}${ICON_ERROR} Grunt task failed. Try to repair it for you.${txtrst}\n\n"
 
         rm -rf .node_modules
         npm install
@@ -56,21 +59,22 @@ function buildMagentoDefault() {
 
         if [[ $? -eq 0 ]]; then
             echo -e "${txtgrn}${ICON_SUCCESS} Grunt tasks finished${txtrst}\n\n"
+            clearCache
+            clearStaticFiles
+            echo -e "\n${txtgrn}${ICON_SUCCESS}${bldcyn} Theme Build for ${txtpur}$THEME_NAME${txtcyn} finished${txtrst}\n\n\n"
         else
-            echo -e "${txtred}${ICON_ERROR} Grunt task failed again. Could not repair.${txtrst}"
+            echo -e "\n\n${bakred}\n\n  ${ICON_ERROR} Grunt task failed again. Could not repair.\n${txtrst}\n\n"
+            echo -e "${txtgrn}${txtcyn} Please fix errors above and try again.${txtrst}"
+            echo -e "\n${txtgrn}${ICON_ERROR}${bldcyn} Theme Build for ${txtpur}$THEME_NAME${txtcyn} failed.${txtrst}\n\n"
         fi
     fi
 
-    clearCache
-    clearStaticFiles
-
-    echo -e "\n${txtgrn}${ICON_SUCCESS}${bldcyn} Theme Build for ${txtpur}$THEME_NAME${txtcyn} finished${txtrst}\n\n\n"
 }
 
 function buildHyva() {
     HYVA_PATH=$1
     HYVA_NAME=$2
-    echo -e "${txtgrn}${ICON_SUCCESS} ${txtpur}$HYVA_NAME${txtcyn} will be build as Hyva Theme${txtrst}"
+    echo -e "${txtgrn}${ICON_SUCCESS} ${txtpur}$HYVA_NAME${txtcyn} will be build as Hyvä Theme${txtrst}"
     if [[ ! -d "$HYVA_PATH/web/tailwind/node_modules" ]]; then
         echo -e "\n${txtylw}Install missing node_modules ... ${txtrst}"
         cd $HYVA_PATH/web/tailwind
@@ -92,7 +96,7 @@ function buildHyva() {
 }
 
 # Build all themes in config.yaml
-if [[ "$1" == "build" && "$2" == "" || "$1" == "b" && "$2" == "" ]]; then
+if [[ "$1" == "build" && "$2" == "" || "$1" == "b" && "$2" == "" || "$1" == "build" && "$2" == "-f" || "$1" == "b" && "$2" == "-f" ]]; then
 
     # Check all themes in config.yaml
     checkThemePathExists
@@ -112,7 +116,7 @@ if [[ "$1" == "build" && "$2" == "" || "$1" == "b" && "$2" == "" ]]; then
     fi
 
     # if more then one theme is available, ask if all themes should be build
-    if [[ $(countThemesinConfig) -gt 1 ]]; then
+    if [[ $(countThemesinConfig) -gt 1 && $2 != '-f' ]]; then
         echo -en "Build all $(countThemesinConfig) Themes? [y/n] "
         read -r answer
         if [ "$answer" = "y" ] || [ "$answer" = "yes" ] || [ "$answer" = "Y" ] || [ "$answer" = "YES" ] || [ "$answer" = "ja" ] || [ "$answer" = "" ]; then
@@ -128,10 +132,10 @@ if [[ "$1" == "build" && "$2" == "" || "$1" == "b" && "$2" == "" ]]; then
 
         THEME_TO_BUILD=$(echo $(grep -oP '(?<='$THEME_CODE': ).*' .ddev/config.yaml) | cut -d ' ' -f 1 | sed 's/"//g')
 
-        # checks to figure out if it is a Hyva Theme
+        # checks to figure out if it is a Hyvä Theme
         checkHyva $THEME_TO_BUILD
 
-        # Try to build as Hyva Theme
+        # Try to build as Hyvä Theme
         if [[ "$HYVA" == true ]]; then
             buildHyva $THEME_TO_BUILD $THEME_CODE
         else
@@ -144,14 +148,14 @@ fi
 
 
 # Build a specific theme (WIP)
-if [[ "$1" == "build" && "$2" != "" || "$1" == "b" && "$2" != "" ]]; then
+if [[ "$1" == "build" && "$2" != "" && "$2" != "-f"  || "$1" == "b" && "$2" != "" && "$2" != "-f" ]]; then
 
     # Check get all themes from config.yaml
     checkThemePathExists
 
     # check if 2nd parameter ($2) is a valid theme code
     if [[ ! " ${THEMES_IN_CONFIG[@]} " =~ " ${2} " ]]; then
-        echo -e "\n${txtred}${ICON_ERROR} ${2} is not a valid theme code. Please check your config.yaml${txtrst}"
+        echo -e "\n${txtred}${ICON_ERROR} ${2} is not a valid theme-code. Please check your config.yaml${txtrst}"
 
         echo -e "${txtcyn}\nAvailable Themes in config.yaml:${txtrst}"
         getThemesInConfig
