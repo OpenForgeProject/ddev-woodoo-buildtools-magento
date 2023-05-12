@@ -2,7 +2,7 @@
 #ddev-generated - Do not modify this file; your modifications will be overwritten.
 
 function checkHyva() {
-    HYVA=flase
+    HYVA=false
     BUILD_PATH=$1
     HYVA_FOLDER=$BUILD_PATH/web/tailwind
     if [[ -d "$HYVA_FOLDER" && -f "$HYVA_FOLDER/tailwind.config.js" && -f "$HYVA_FOLDER/package.json" ]]; then
