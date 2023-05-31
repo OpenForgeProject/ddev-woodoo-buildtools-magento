@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 ### Upcoming Changes for 1.3.0
 ##### This section will be updated after commits or Pull-Request merges
 
-- ...
+- build process check if hyva themeversion is > 1.1.19 to change build command
 
 ---
 ## Latest Release

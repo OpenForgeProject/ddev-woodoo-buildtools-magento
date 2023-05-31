@@ -17,6 +17,7 @@ _>> Build all your Magento themes at once, with Magic, build with Woodoo!_
 |-|-|
 |<img src="https://img.shields.io/badge/Magento_2.x-Supported-43A047">| released |
 |<img src="https://img.shields.io/badge/Magento_2_Hyvä_1.2x-Supported-43A047">| released |
+|<img src="https://img.shields.io/badge/Magento_2_Hyvä_1.1.x-work_in_progress-29B6F6">| __will release with 1.3.0__ |
 |<img src="https://img.shields.io/badge/Magento_2_Hyvä_Fallback-Supported-43A047">| released |
 |<img src="https://img.shields.io/badge/Magento_1 (_MageOne_)-planned-FFCA28">| not started yet |
 

@@ -74,7 +74,16 @@ function buildMagentoDefault() {
 function buildHyva() {
     HYVA_PATH=$1
     HYVA_NAME=$2
-    echo -e "${txtgrn}${ICON_SUCCESS} ${txtpur}$HYVA_NAME${txtcyn} will be build as Hyvä Theme${txtrst}"
+
+    cd $HYVA_PATH
+    hyva_version=$(echo $(grep -oP '(?<="hyva-themes/magento2-default-theme": ").*' composer.json) | cut -d ' ' -f 1 | sed 's/"//g')
+    hyva_version=$(echo $hyva_version | cut -d '~' -f 2)
+    # remove , from version
+    hyva_version=$(echo $hyva_version | cut -d ',' -f 1)
+
+    cd - > /dev/null
+
+    echo -e "${txtgrn}${ICON_SUCCESS} ${txtpur}$HYVA_NAME${txtcyn} will be build as Hyvä ${txtpur}$hyva_version${txtcyn} Theme${txtrst}"
     if [[ ! -d "$HYVA_PATH/web/tailwind/node_modules" ]]; then
         echo -e "\n${txtylw}Install missing node_modules ... ${txtrst}"
         cd $HYVA_PATH/web/tailwind
@@ -86,8 +95,15 @@ function buildHyva() {
             echo -e "${txtred}${ICON_ERROR} Could not install node_modules. Please check $HYVA_PATH/web/tailwind/node_modules ${txtrst}"
         fi
     fi
+
     cd $HYVA_PATH/web/tailwind
-    npm run build
+
+    if [[ $hyva_version > 1.2.0 ]]; then
+        npm run build
+    else
+        npm run build-prod
+    fi
+
     cd - > /dev/null
     clearCache
     clearStaticFiles
