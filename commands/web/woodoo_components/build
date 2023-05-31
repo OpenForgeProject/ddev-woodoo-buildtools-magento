@@ -77,9 +77,9 @@ function buildHyva() {
 
     cd $HYVA_PATH
     hyva_version=$(echo $(grep -oP '(?<="hyva-themes/magento2-default-theme": ").*' composer.json) | cut -d ' ' -f 1 | sed 's/"//g')
-    hyva_version=$(echo $hyva_version | cut -d '~' -f 2)
-    # remove , from version
     hyva_version=$(echo $hyva_version | cut -d ',' -f 1)
+    hyva_version=$(echo $hyva_version | cut -d '~' -f 2)
+    hyva_version=$(echo $hyva_version | cut -d '^' -f 1)
 
     cd - > /dev/null
 
