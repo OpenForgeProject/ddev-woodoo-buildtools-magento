@@ -45,8 +45,6 @@ function buildMagentoDefault() {
     # check if grunt task was successful
     if [[ $? -eq 0 ]]; then
         echo -e "${txtgrn}${ICON_SUCCESS} Grunt tasks finished${txtrst}\n\n"
-        clearCache
-        clearStaticFiles
         echo -e "\n${txtgrn}${ICON_SUCCESS}${bldcyn} Theme Build for ${txtpur}$THEME_NAME${txtcyn} finished${txtrst}\n\n\n"
     else
         echo -e "\n\n${txtred}${ICON_ERROR} Grunt task failed. Try to repair it for you.${txtrst}\n\n"
@@ -59,8 +57,6 @@ function buildMagentoDefault() {
 
         if [[ $? -eq 0 ]]; then
             echo -e "${txtgrn}${ICON_SUCCESS} Grunt tasks finished${txtrst}\n\n"
-            clearCache
-            clearStaticFiles
             echo -e "\n${txtgrn}${ICON_SUCCESS}${bldcyn} Theme Build for ${txtpur}$THEME_NAME${txtcyn} finished${txtrst}\n\n\n"
         else
             echo -e "\n\n${bakred}\n\n  ${ICON_ERROR} Grunt task failed again. Could not repair.\n${txtrst}\n\n"
@@ -105,8 +101,6 @@ function buildHyva() {
     fi
 
     cd - > /dev/null
-    clearCache
-    clearStaticFiles
     hyvaConfigGenerate
     echo -e "\n${txtgrn}${ICON_SUCCESS}${bldcyn} Hyvä Theme Build for ${txtpur}$HYVA_NAME${txtcyn} finished${txtrst}\n\n\n"
 }
@@ -159,6 +153,10 @@ if [[ "$1" == "build" && "$2" == "" || "$1" == "b" && "$2" == "" || "$1" == "bui
         fi
 
     done
+
+    clearCache
+    clearStaticFiles
+
 fi
 
 
@@ -172,18 +170,23 @@ if [[ "$1" == "build" && "$2" != "" && "$2" != "-f"  || "$1" == "b" && "$2" != "
     # check if 2nd parameter ($2) is a valid theme code
     if [[ ! " ${THEMES_IN_CONFIG[@]} " =~ " ${2} " ]]; then
         echo -e "\n${txtred}${ICON_ERROR} ${2} is not a valid theme-code. Please check your config.yaml${txtrst}"
-
         echo -e "${txtcyn}\nAvailable Themes in config.yaml:${txtrst}"
         getThemesInConfig
         echo -e "\n"
         exit 0
     else
         THEME_TO_BUILD=$(echo $(grep -oP '(?<='$2': ).*' .ddev/config.yaml) | cut -d ' ' -f 1 | sed 's/"//g')
+
         checkHyva $THEME_TO_BUILD
+
         if [[ "$HYVA" == true ]]; then
             buildHyva $THEME_TO_BUILD $2
         else
             buildMagentoDefault $2
         fi
+
+        clearCache
+        clearStaticFiles
+
     fi
 fi

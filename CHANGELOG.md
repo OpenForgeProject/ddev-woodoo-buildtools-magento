@@ -4,7 +4,8 @@ All notable changes to this project will be documented in this file.
 ### Upcoming Changes for 1.3.0
 ##### This section will be updated after commits or Pull-Request merges
 
-- build process check if hyva themeversion is > 1.1.19 to change build command (https://github.com/dermatz/ddev-woodoo-buildtools-magento/issues/11 by [@therouv](https://github.com/therouv))
+- Build-process check if hyva themeversion is > 1.1.19 to change build command (https://github.com/dermatz/ddev-woodoo-buildtools-magento/issues/11 by [@therouv](https://github.com/therouv))
+- Clear cache once after all themes have been built (https://github.com/dermatz/ddev-woodoo-buildtools-magento/issues/12 by [@therouv](https://github.com/therouv))
 
 ---
 ## Latest Release
