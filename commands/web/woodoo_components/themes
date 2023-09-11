@@ -4,8 +4,7 @@
 function getMagento2_ThemeStoreCodes() {
 
     # check if mysql is installed
-    if ! command -v mysql &> /dev/null
-    then
+    if ! command -v mysql &> /dev/null; then
         echo -e "\n${txtred}mysql could not be found.${txtrst}"
         echo -e "${txtred}Please install mysql.${txtrst}\n"
         exit 1
@@ -24,7 +23,6 @@ function getThemesFromDB() {
             echo -e "${txtpur}- $THEME_CODE ${txtrst}"
         done
     fi
-
 }
 
 function addThemesToConfig() {
@@ -48,7 +46,7 @@ function addThemesToConfig() {
 
             ((LINE++))
 
-            # checks if theme is already in config.yaml
+            # checks if theme is already in config-themes.yaml
             if grep -q "$THEME_CODE" $PROJECT_CONFIG_FILE; then
                 echo -en "${txtylw}${ICON_ERROR} Theme "$THEME_CODE" already exists (skipped)${txtrst}\n\n"
                 continue
@@ -77,11 +75,11 @@ function readThemesInConfig() {
     THEMES_IN_CONFIG=""
 
     if [ ! -f $PROJECT_CONFIG_FILE ]; then
-        echo -e "\n${txtred}No $PROJECT_CONFIG_FILE found.' first.${txtrst}\n"
-        exit 1
+        echo -e "\n${txtred}No $PROJECT_CONFIG_FILE found.' ${txtrst}\n"
+        exit 0
     fi
 
-    # Read config.yaml to get available themes
+    # Read config-themes.yaml to get available themes
     while read -r line; do
         # Check whether the line with "Themes:" begins
         if [[ "$line" =~ ^themes: ]]; then
@@ -98,7 +96,7 @@ function readThemesInConfig() {
     done < $PROJECT_CONFIG_FILE
 }
 
-# Count Themes by reading config.yaml with readThemesInConfig()
+# Count Themes by reading config-themes.yaml with readThemesInConfig()
 function countThemesinConfig() {
 
     readThemesInConfig
@@ -110,7 +108,7 @@ function countThemesinConfig() {
 
 }
 
-# get all available themes in config.yaml
+# get all available themes in config-themes.yaml
 function getThemesInConfig() {
 
     readThemesInConfig
@@ -124,7 +122,7 @@ function getThemesInConfig() {
 
 }
 
-#check all available themes in config.yaml if the path is not "path/to/theme"
+#check all available themes in config-themes.yaml if the path is not "path/to/theme"
 function checkThemePathExists() {
 
     readThemesInConfig

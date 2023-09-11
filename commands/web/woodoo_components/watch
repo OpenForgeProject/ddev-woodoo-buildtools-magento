@@ -73,7 +73,7 @@ function watchMagento() {
 # Watch a specific theme (WIP)
 if [[ "$1" == "watch" && "$2" != "" || "$1" == "w" && "$2" != "" ]]; then
 
-    # get all themes from config.yaml and check if 2nd parameter ($2) is a valid theme code
+    # get all themes from config-themes.yaml and check if 2nd parameter ($2) is a valid theme code
     checkThemePathExists
 
 
@@ -81,12 +81,12 @@ if [[ "$1" == "watch" && "$2" != "" || "$1" == "w" && "$2" != "" ]]; then
     if [[ ! " ${THEMES_IN_CONFIG[@]} " =~ " ${2} " ]]; then
         echo -e "\n${txtred}${ICON_ERROR} ${2} is not a valid theme code. Please check your config.yaml${txtrst}"
 
-        echo -e "${txtcyn}\nAvailable Themes to watch in config.yaml:${txtrst}"
+        echo -e "${txtcyn}\nAvailable Themes to watch in $PROJECT_CONFIG_FILE:${txtrst}"
         getThemesInConfig
         echo -e "\n"
         exit 0
     else
-        THEME_TO_BUILD=$(echo $(grep -oP '(?<='$2': ).*' .ddev/config.yaml) | cut -d ' ' -f 1 | sed 's/"//g')
+        THEME_TO_BUILD=$(echo $(grep -oP '(?<='$2': ).*' $PROJECT_CONFIG_FILE) | cut -d ' ' -f 1 | sed 's/"//g')
         checkHyva $THEME_TO_BUILD
         if [[ "$HYVA" == true ]]; then
             watchHyva $THEME_TO_BUILD $2
@@ -107,7 +107,7 @@ if [[ "$1" == "watch" && "$2" == "" || "$1" == "w" && "$2" == "" ]]; then
     if [[ $(countThemesinConfig) -lt 1 ]]; then
 
         echo -e "${txtred}No Theme available to build${txtrst}\n"
-        echo -e "${txtgrn}Add a Theme to config.yaml${txtrst}\n"
+        echo -e "${txtgrn}Add a Theme to $PROJECT_CONFIG_FILE${txtrst}\n"
 
         addThemesToConfig
 
@@ -115,7 +115,7 @@ if [[ "$1" == "watch" && "$2" == "" || "$1" == "w" && "$2" == "" ]]; then
         echo -e "\n${txtgrn}$(countThemesinConfig)${txtcyn} Theme is ready to watch:${txtrst}"
         for THEME_CODE in $THEMES_IN_CONFIG; do
 
-            THEME_TO_BUILD=$(echo $(grep -oP '(?<='$THEME_CODE': ).*' .ddev/config.yaml) | cut -d ' ' -f 1 | sed 's/"//g')
+            THEME_TO_BUILD=$(echo $(grep -oP '(?<='$THEME_CODE': ).*' $PROJECT_CONFIG_FILE) | cut -d ' ' -f 1 | sed 's/"//g')
 
             # checks to figure out if it is a Hyva Theme
             checkHyva $THEME_TO_BUILD

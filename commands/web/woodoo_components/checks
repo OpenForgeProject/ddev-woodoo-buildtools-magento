@@ -10,3 +10,69 @@ function checkHyva() {
     fi
 }
 
+function checkForNewThemeConfig() {
+
+    # check if $PROJECT_CONFIG_FILE exists
+    if [ ! -f $PROJECT_CONFIG_FILE ]; then
+
+        echo -e "\n${txtylw}👉 Since Woodoo Version 1.4, a new $PROJECT_CONFIG_FILE file is required!${txtrst}"
+        echo -en "${txtblu}What has been changed?${txtrst} You no longer have to add your Themes to ${txtcyn}$OLD_CONFIG_FILE${txtylw}.${txtrst}\n"
+        echo -en "${txtblu}What is new?${txtrst} Now all Theme Settings are stored in this new file: ${txtcyn}$PROJECT_CONFIG_FILE${txtrst}\n\n"
+        echo -en "${txtgrn}🛠  Copy and cleanup Theme Settings now? [y/n] ${txtrst}"
+
+        read -r answer
+
+        if [ "$answer" = "y" ] || [ "$answer" = "yes" ] || [ "$answer" = "Y" ] || [ "$answer" = "YES" ] || [ "$answer" = "ja" ] || [ "$answer" = "" ]; then
+            migrateThemesToNewConfigFile
+        else
+            echo -e "\n${txtred}Please create $PROJECT_CONFIG_FILE and add your theme pathes manually.${txtrst}\n"
+            exit 1
+        fi
+    fi
+}
+
+function migrateThemesToNewConfigFile() {
+
+    touch $PROJECT_CONFIG_FILE
+
+    if [ ! -f $PROJECT_CONFIG_FILE ]; then
+        echo -e "\n${txtred}Could not create $PROJECT_CONFIG_FILE.${txtrst}\n"
+        exit 0
+    else
+        echo -e "\n${txtgrn}${ICON_SUCCESS} $PROJECT_CONFIG_FILE created.${txtrst}\n"
+    fi
+
+    if [ -f $PROJECT_CONFIG_FILE ]; then
+
+        # check if $PROJECT_CONFIG_FILE is empty
+        if [ ! -s $PROJECT_CONFIG_FILE ]; then
+            if grep -q "themes:" $OLD_CONFIG_FILE; then
+
+                # Copy Themes and cleanup $OLD_CONFIG_FILE
+                while grep -q "themes:" $OLD_CONFIG_FILE; do
+                    sed -n '/themes:/,/^[^ ]/p' $OLD_CONFIG_FILE > $PROJECT_CONFIG_FILE
+                    sed -i '$d' $PROJECT_CONFIG_FILE
+                    sed -i '/    -/d' $OLD_CONFIG_FILE
+                    sed -i '/themes:/d' $OLD_CONFIG_FILE
+                done
+                echo -e "\n${txtgrn}${ICON_SUCCESS} Theme settings copied successfully.${txtrst}\n"
+            else
+                echo -e "\n${txtgrn}${ICON_SUCCESS} $OLD_CONFIG_FILE is correct${txtrst}"
+
+                if grep -q "themes:" $PROJECT_CONFIG_FILE; then
+                    echo -en "${txtgrn}${ICON_SUCCESS} Themes-Section already exist in $PROJECT_CONFIG_FILE ${txtrst}"
+                else
+                    echo -en "${txtylw}${ICON_INFO} Please add your themes to $PROJECT_CONFIG_FILE with ${txtcyn}ddev frontend init${txtrst}"
+                fi
+
+                echo -e "\n"
+                exit 0
+            fi
+        else
+            echo -e "\n${txtylw}File already filled. PLease check the content of $PROJECT_CONFIG_FILE and run ${txtcyn}ddev frontend init${txtred} again.${txtrst}\n"
+            exit 0
+        fi
+    fi
+}
+
+checkForNewThemeConfig

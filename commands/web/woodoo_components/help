@@ -8,12 +8,12 @@ if [[ "$1" == "help" || "$1" == "-help" || "$1" == "--help" || "$1" == "--h" || 
 
 
     echo -e "${txtcyn}Command:${txtrst}"
-    echo -e "  ${bldcyn}init, install${txtrst}         Initial Woodoo Setup to read all themes from dataabase and write to .ddev/config.yaml"
+    echo -e "  ${bldcyn}init, install${txtrst}         Initial Woodoo Setup to read all themes from dataabase and write to ${txtcyn}$PROJECT_CONFIG_FILE${txtrst}"
     echo -e "  ${txtcyn}help${txtrst}                  Displays this help page"
     echo -e "  ${txtcyn}check, selftest${txtrst}       Frontend Self-Test"
     echo -e "  ${txtcyn}frontend-update${txtrst}       Update to the latest Version"
-    echo -e "  ${txtcyn}themes${txtrst}                List all available themes that are configured in ${txtcyn}.ddev/config.yaml${txtrst}"
-    echo -e "  ${txtcyn}build${txtrst}                 Builds all themes that are configured in ${txtcyn}.ddev/config.yaml${txtrst}"
+    echo -e "  ${txtcyn}themes${txtrst}                List all available themes that are configured in ${txtcyn}$PROJECT_CONFIG_FILE${txtrst}"
+    echo -e "  ${txtcyn}build${txtrst}                 Builds all themes that are configured in ${txtcyn}$PROJECT_CONFIG_FILE${txtrst}"
     echo -e "  ${txtcyn}build ${txtylw}-f${txtrst}              Builds all themes without yes/no question"
     echo -e "  ${txtcyn}build ${txtpur}theme${txtrst}           Build a specific theme${txtrst}"
     echo -e "  ${txtcyn}watch ${txtpur}theme${txtrst}           Watch for CSS and JS changes in a specific theme${txtrst}"
