@@ -64,7 +64,6 @@ function buildMagentoDefault() {
             echo -e "\n${txtgrn}${ICON_ERROR}${bldcyn} Theme Build for ${txtpur}$THEME_NAME${txtcyn} failed.${txtrst}\n\n"
         fi
     fi
-
 }
 
 function buildHyva() {
@@ -105,17 +104,17 @@ function buildHyva() {
     echo -e "\n${txtgrn}${ICON_SUCCESS}${bldcyn} Hyvä Theme Build for ${txtpur}$HYVA_NAME${txtcyn} finished${txtrst}\n\n\n"
 }
 
-# Build all themes in config.yaml
+# Build all themes in config-themes.yaml
 if [[ "$1" == "build" && "$2" == "" || "$1" == "b" && "$2" == "" || "$1" == "build" && "$2" == "-f" || "$1" == "b" && "$2" == "-f" ]]; then
 
-    # Check all themes in config.yaml
+    # Check all themes in config-themes.yaml
     checkThemePathExists
 
-    # Show all available themes in config.yaml
+    # Show all available themes in config-themes.yaml
     if [[ $(countThemesinConfig) -lt 1 ]]; then
 
         echo -e "${txtred}No Theme available to build${txtrst}\n"
-        echo -e "${txtgrn}Add a Theme to config.yaml${txtrst}\n"
+        echo -e "${txtgrn}Add a Theme to ${txtcyn}$PROJECT_CONFIG_FILE${txtrst}${txtrst}\n"
 
         addThemesToConfig
 
@@ -137,10 +136,10 @@ if [[ "$1" == "build" && "$2" == "" || "$1" == "b" && "$2" == "" || "$1" == "bui
         fi
     fi
 
-    # Build all themes in config.yaml
+    # Build all themes
     for THEME_CODE in $THEMES_IN_CONFIG; do
 
-        THEME_TO_BUILD=$(echo $(grep -oP '(?<='$THEME_CODE': ).*' .ddev/config.yaml) | cut -d ' ' -f 1 | sed 's/"//g')
+        THEME_TO_BUILD=$(echo $(grep -oP '(?<='$THEME_CODE': ).*' $PROJECT_CONFIG_FILE) | cut -d ' ' -f 1 | sed 's/"//g')
 
         # checks to figure out if it is a Hyvä Theme
         checkHyva $THEME_TO_BUILD
@@ -161,21 +160,21 @@ fi
 
 
 
-# Build a specific theme (WIP)
+# Build a specific Theme
 if [[ "$1" == "build" && "$2" != "" && "$2" != "-f"  || "$1" == "b" && "$2" != "" && "$2" != "-f" ]]; then
 
-    # Check get all themes from config.yaml
+    # Check get all themes from config-themes.yaml
     checkThemePathExists
 
     # check if 2nd parameter ($2) is a valid theme code
     if [[ ! " ${THEMES_IN_CONFIG[@]} " =~ " ${2} " ]]; then
-        echo -e "\n${txtred}${ICON_ERROR} ${2} is not a valid theme-code. Please check your config.yaml${txtrst}"
-        echo -e "${txtcyn}\nAvailable Themes in config.yaml:${txtrst}"
+        echo -e "\n${txtred}${ICON_ERROR} ${2} is not a valid theme-code. Please check your $PROJECT_CONFIG_FILE${txtrst}"
+        echo -e "${txtcyn}\nAvailable Themes in $PROJECT_CONFIG_FILE:${txtrst}"
         getThemesInConfig
         echo -e "\n"
         exit 0
     else
-        THEME_TO_BUILD=$(echo $(grep -oP '(?<='$2': ).*' .ddev/config.yaml) | cut -d ' ' -f 1 | sed 's/"//g')
+        THEME_TO_BUILD=$(echo $(grep -oP '(?<='$2': ).*' $PROJECT_CONFIG_FILE) | cut -d ' ' -f 1 | sed 's/"//g')
 
         checkHyva $THEME_TO_BUILD
 

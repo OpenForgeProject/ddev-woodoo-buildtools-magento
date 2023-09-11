@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 ---
 ### Upcoming Changes for 1.4.0
+- add new Feature to update setup a new ddev config file `.ddev/config-themes.yaml` to store theme specific settings
+- extend `ddev frontend` command to update automaticly theme-settings from `config.yaml` to `config-themes.yaml`
+- improved Codestyle and Codequality
+- add global variables to functions
 
 ##### This section will be updated after commits or Pull-Request merges
 ---
