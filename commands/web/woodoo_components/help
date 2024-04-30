@@ -18,6 +18,7 @@ if [[ "$1" == "help" || "$1" == "-help" || "$1" == "--help" || "$1" == "--h" || 
     echo -e "  ${txtcyn}build ${txtylw}-f${txtrst}              Builds all themes without yes/no question"
     echo -e "  ${txtcyn}build ${txtpur}theme${txtrst}           Build a specific theme${txtrst}"
     echo -e "  ${txtcyn}watch ${txtpur}theme${txtrst}           Watch for CSS and JS changes in a specific theme${txtrst}"
+    echo -e "  ${txtcyn}version, --version${txtrst}    Show version${txtrst}"
 
     echo -e "${txtylw}\nOption:${txtrst}"
     echo -e "  ${txtylw}-f${txtrst}                    Force the build command to run without yes/no question"

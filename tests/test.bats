@@ -1,14 +1,19 @@
 setup() {
   set -eu -o pipefail
   export DIR="$( cd "$( dirname "$BATS_TEST_FILENAME" )" >/dev/null 2>&1 && pwd )/.."
-  export TESTDIR=~/tmp/test-addon-template
+  export TESTDIR=~/tmp/test-woodoo
   mkdir -p $TESTDIR
-  export PROJNAME=test-addon-template
+  export PROJNAME=test-woodoo
+  export DDEV_ADDON=dermatz/ddev-woodoo-buildtools-magento
   export DDEV_NON_INTERACTIVE=true
   ddev delete -Oy ${PROJNAME} >/dev/null 2>&1 || true
   cd "${TESTDIR}"
   ddev config --project-name=${PROJNAME}
   ddev start -y >/dev/null
+}
+
+health_checks() {
+  run ddev frontend --version
 }
 
 teardown() {
@@ -24,17 +29,14 @@ teardown() {
   echo "# ddev get ${DIR} with project ${PROJNAME} in ${TESTDIR} ($(pwd))" >&3
   ddev get ${DIR}
   ddev restart
-  # Do something here to verify functioning extra service
-  # For extra credit, use a real CMS with actual config.
-  # ddev exec "curl -s elasticsearch:9200" | grep "${PROJNAME}-elasticsearch"
+  health_checks
 }
 
 @test "install from release" {
   set -eu -o pipefail
   cd ${TESTDIR} || ( printf "unable to cd to ${TESTDIR}\n" && exit 1 )
-  echo "# ddev get ddev/ddev-addon-template with project ${PROJNAME} in ${TESTDIR} ($(pwd))" >&3
-  ddev get ddev/ddev-addon-template
+  echo "# ddev get ${DDEV_ADDON} with project ${PROJNAME} in ${TESTDIR} ($(pwd))" >&3
+  ddev get ${DDEV_ADDON}
   ddev restart >/dev/null
-  # Do something useful here that verifies the add-on
-  # ddev exec "curl -s elasticsearch:9200" | grep "${PROJNAME}-elasticsearch"
+  health_checks
 }
