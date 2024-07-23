@@ -81,11 +81,22 @@ Command:
   build -f                Builds all themes without yes/no question (force)
   build Vendor/theme      Build a specific theme
   watch Vendor/theme      Watch for CSS and JS changes in a specific theme
+  magshare                Share Magento project using ngrok and update base URL
 
 Option:
   -f                      Builds all themes without yes/no question (force)
   themecode               Theme-Code from .ddev/config.yaml
 ```
+
+## Example
+
+To share your Magento project using ngrok and update the base URL, use the following command:
+
+```shell
+ddev magshare
+```
+
+This command will start ngrok, retrieve the forward URL, and update the local Magento base URL accordingly.
 
 ## Feature request
 

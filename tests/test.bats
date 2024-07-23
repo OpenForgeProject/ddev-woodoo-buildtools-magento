@@ -40,3 +40,18 @@ teardown() {
   ddev restart >/dev/null
   health_checks
 }
+
+@test "magshare command updates Magento base URL" {
+  set -eu -o pipefail
+  cd ${TESTDIR}
+  ddev get ${DIR}
+  ddev restart
+  run ddev magshare
+  [ "$status" -eq 0 ]
+  run ddev exec bin/magento config:show web/unsecure/base_url
+  [ "$status" -eq 0 ]
+  [[ "$output" == https://*.ngrok.io/ ]]
+  run ddev exec bin/magento config:show web/secure/base_url
+  [ "$status" -eq 0 ]
+  [[ "$output" == https://*.ngrok.io/ ]]
+}

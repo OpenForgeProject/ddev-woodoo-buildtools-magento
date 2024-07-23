@@ -1,0 +1,22 @@
+#!/bin/bash
+
+## Description: Share Magento project using ngrok and update base URL
+## Usage: ddev magshare
+## Example: "ddev magshare"
+## ExecRaw: true
+## HostWorkingDir: false
+
+# Start ngrok and retrieve the forward URL
+NGROK_URL=$(ddev share | grep -o 'https://[a-zA-Z0-9.-]*\.ngrok\.io')
+
+if [ -z "$NGROK_URL" ]; then
+  echo "Failed to retrieve ngrok URL"
+  exit 1
+fi
+
+# Update Magento base URL
+ddev exec bin/magento config:set web/unsecure/base_url "$NGROK_URL/"
+ddev exec bin/magento config:set web/secure/base_url "$NGROK_URL/"
+ddev exec bin/magento cache:flush
+
+echo "Magento base URL updated to $NGROK_URL"
