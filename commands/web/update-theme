@@ -1,0 +1,146 @@
+#!/bin/bash
+#ddev-generated - Do not modify this file; your modifications will be overwritten.
+
+## Description: Update npm dependencies and run necessary commands for Hyva themes
+## Usage: update-theme
+## Example: "ddev frontend update-theme"
+## ExecRaw: true
+## HostWorkingDir: false
+
+# shellcheck source=woodoo_components/variables
+source ".ddev/commands/web/woodoo_components/variables"
+
+echo -e "${bldblu}DDEV Woodoo Update Theme ${WOODOO_VERSION} for Magento ${txtrst}"
+
+if [[ $1 == "version" || $1 == "--version" ]]; then
+    exit 0
+fi
+
+if [[ ${WOODOO_VERSION} != "${LATEST_WOODOO_VERSION}" ]]; then
+    echo -e "🧱 ${txtcyn}Installed Version ${bldred}${WOODOO_VERSION}${txtrst}"
+    echo -e "⭐️ ${txtcyn}The newer Version ${bldgrn}${LATEST_WOODOO_VERSION} is available!${txtrst}"
+    echo -e "✅ ${txtgrn}Install update with: ${txtcyn}ddev frontend-update${txtrst}"
+fi
+
+source ".ddev/commands/web/woodoo_components/checks"
+source ".ddev/commands/web/woodoo_components/themes"
+source ".ddev/commands/web/woodoo_components/build"
+
+function updateHyvaTheme() {
+    HYVA_PATH=$1
+    HYVA_NAME=$2
+
+    if [[ ! -f "${DDEV_COMPOSER_ROOT}/${HYVA_PATH}/composer.json" ]]; then
+        echo -e "${txtred}${ICON_ERROR} Could not find composer.json in Theme (${HYVA_PATH})"
+        echo -e "${txtylw}${ICON_ARROW_RIGHT} Use composer.json from Magento-Root instead${txtrst}"
+        cd "${DDEV_COMPOSER_ROOT}" || exit
+        hyva_version=$(grep -oP '(?<="hyva-themes/magento2-default-theme": ").*' composer.json | cut -d ' ' -f 1 | sed 's/"//g')
+    else
+        cd "${DDEV_COMPOSER_ROOT}/${HYVA_PATH}" || exit
+        hyva_version=$(grep -oP '(?<="hyva-themes/magento2-default-theme": ").*' composer.json | cut -d ' ' -f 1 | sed 's/"//g')
+    fi
+
+    hyva_version=$(echo "${hyva_version}" | sed 's/,//g')
+
+    cd - >/dev/null || exit
+
+    if [[ -d "${HYVA_PATH}/web/tailwind/node_modules" ]]; then
+        cd "${HYVA_PATH}"/web/tailwind || exit
+        echo -e "\n${txtcyn}Check for node_modules Updates ... ${txtrst}\n"
+        npm outdated --silent || npm ci
+        echo -e "${txtgrn}Update-Check Done.${txtrst}\n"
+        cd - >/dev/null || exit
+    fi
+
+    echo -e "${txtgrn}${ICON_SUCCESS} ${txtpur}${HYVA_NAME}${txtcyn} will be updated as Hyvä ${txtpur}${hyva_version}${txtcyn} Theme${txtrst}"
+    if [[ ! -d "${HYVA_PATH}/web/tailwind/node_modules" ]]; then
+        echo -e "\n${txtylw}Install missing node_modules ... ${txtrst}"
+        cd "${HYVA_PATH}"/web/tailwind || exit
+        npm ci
+        if [[ -d "./node_modules" ]]; then
+            echo -e "${txtgrn}${ICON_SUCCESS} Done. ${txtrst}"
+            cd - >/dev/null || exit
+        else
+            echo -e "${txtred}${ICON_ERROR} Could not install node_modules. Please check ${HYVA_PATH}/web/tailwind/node_modules ${txtrst}"
+            cd - >/dev/null || exit
+        fi
+    fi
+
+    cd "${HYVA_PATH}"/web/tailwind || exit
+
+    if [[ ${hyva_version} > 1.2.0 ]]; then
+        npm run build
+    else
+        npm run build-prod
+    fi
+
+    cd - >/dev/null || exit
+    hyvaConfigGenerate
+    echo -e "\n${txtgrn}${ICON_SUCCESS}${bldcyn} Hyvä Theme Update for ${txtpur}${HYVA_NAME}${txtcyn} finished${txtrst}\n\n\n"
+}
+
+# Update all themes in config-themes.yaml
+if [[ $1 == "update-theme" && $2 == "" || $1 == "u" && $2 == "" || $1 == "update-theme" && $2 == "-f" || $1 == "u" && $2 == "-f" ]]; then
+
+    checkThemePathExists silent
+
+    if [[ $(countThemesinConfig) -lt 1 ]]; then
+        echo -e "${txtred}No Theme is available to update${txtrst}\n"
+        echo -e "${txtgrn}Please add a Theme to ${txtcyn}${PROJECT_CONFIG_FILE}${txtrst}${txtrst}\n"
+        addThemesToConfig
+    elif [[ $(countThemesinConfig) == 1 ]]; then
+        echo -e "${txtgrn}$(countThemesinConfig) Theme is ready to update:${txtrst}\n"
+    else
+        echo -e "${txtgrn}$(countThemesinConfig) Themes are ready to update:${txtrst}\n"
+    fi
+
+    if [[ $(countThemesinConfig) -gt 1 && $2 != '-f' ]]; then
+        THEMES_TO_UPDATE=$(gum choose --cursor-prefix "[ ] " --unselected-prefix "[ ] " --selected-prefix "[✓] " --no-limit $THEMES_IN_CONFIG)
+    else
+        THEMES_TO_UPDATE=${THEMES_IN_CONFIG}
+    fi
+
+    for THEME_CODE in ${THEMES_TO_UPDATE}; do
+        THEME_TO_UPDATE=$(echo $(grep -oP '(?<='$THEME_CODE': ).*' $PROJECT_CONFIG_FILE) | cut -d ' ' -f 1 | sed 's/"//g')
+
+        checkHyva "${THEME_TO_UPDATE}"
+
+        if [[ ${HYVA} == true ]]; then
+            updateHyvaTheme "$THEME_TO_UPDATE" "$THEME_CODE"
+        else
+            echo -e "${txtred}${ICON_ERROR} ${THEME_CODE} is not a Hyva theme. Skipping update.${txtrst}"
+        fi
+    done
+
+    clearCache
+    clearStaticFiles
+
+fi
+
+# Update a specific Theme
+if [[ $1 == "update-theme" && $2 != "" && $2 != "-f" || $1 == "u" && $2 != "" && $2 != "-f" ]]; then
+
+    checkThemePathExists
+
+    if [[ ! " ${THEMES_IN_CONFIG[@]} " =~ " ${2} " ]]; then
+        echo -e "\n${txtred}${ICON_ERROR} ${2} is not a valid theme-code. Please check your $PROJECT_CONFIG_FILE${txtrst}"
+        echo -e "${txtcyn}\nAvailable Themes in $PROJECT_CONFIG_FILE:${txtrst}"
+        getThemesInConfig
+        echo -e "\n"
+        exit 0
+    else
+        THEME_TO_UPDATE=$(echo $(grep -oP '(?<='$2': ).*' $PROJECT_CONFIG_FILE) | cut -d ' ' -f 1 | sed 's/"//g')
+
+        checkHyva $THEME_TO_UPDATE
+
+        if [[ $HYVA == true ]]; then
+            updateHyvaTheme "$THEME_TO_UPDATE" "$2"
+        else
+            echo -e "${txtred}${ICON_ERROR} ${2} is not a Hyva theme. Skipping update.${txtrst}"
+        fi
+
+        clearCache
+        clearStaticFiles
+
+    fi
+fi

@@ -40,3 +40,14 @@ teardown() {
   ddev restart >/dev/null
   health_checks
 }
+
+@test "update-theme command updates npm dependencies and runs necessary commands for Hyva themes" {
+  set -eu -o pipefail
+  cd ${TESTDIR} || ( printf "unable to cd to ${TESTDIR}\n" && exit 1 )
+  echo "# ddev get ${DDEV_ADDON} with project ${PROJNAME} in ${TESTDIR} ($(pwd))" >&3
+  ddev get ${DDEV_ADDON}
+  ddev restart >/dev/null
+  run ddev frontend update-theme
+  [ "$status" -eq 0 ]
+  [ "$(echo "$output" | grep -c "Hyvä Theme Update for")" -gt 0 ]
+}

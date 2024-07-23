@@ -129,6 +129,59 @@ function buildHyva() {
     echo -e "\n${txtgrn}${ICON_SUCCESS}${bldcyn} Hyvä Theme Build for ${txtpur}${HYVA_NAME}${txtcyn} finished${txtrst}\n\n\n"
 }
 
+function updateHyvaTheme() {
+    HYVA_PATH=$1
+    HYVA_NAME=$2
+
+    if [[ ! -f "${DDEV_COMPOSER_ROOT}/${HYVA_PATH}/composer.json" ]]; then
+        echo -e "${txtred}${ICON_ERROR} Could not find composer.json in Theme (${HYVA_PATH})"
+        echo -e "${txtylw}${ICON_ARROW_RIGHT} Use composer.json from Magento-Root instead${txtrst}"
+        cd "${DDEV_COMPOSER_ROOT}" || exit
+        hyva_version=$(grep -oP '(?<="hyva-themes/magento2-default-theme": ").*' composer.json | cut -d ' ' -f 1 | sed 's/"//g')
+    else
+        cd "${DDEV_COMPOSER_ROOT}/${HYVA_PATH}" || exit
+        hyva_version=$(grep -oP '(?<="hyva-themes/magento2-default-theme": ").*' composer.json | cut -d ' ' -f 1 | sed 's/"//g')
+    fi
+
+    hyva_version=$(echo "${hyva_version}" | sed 's/,//g')
+
+    cd - >/dev/null || exit
+
+    if [[ -d "${HYVA_PATH}/web/tailwind/node_modules" ]]; then
+        cd "${HYVA_PATH}"/web/tailwind || exit
+        echo -e "\n${txtcyn}Check for node_modules Updates ... ${txtrst}\n"
+        npm outdated --silent || npm ci
+        echo -e "${txtgrn}Update-Check Done.${txtrst}\n"
+        cd - >/dev/null || exit
+    fi
+
+    echo -e "${txtgrn}${ICON_SUCCESS} ${txtpur}${HYVA_NAME}${txtcyn} will be updated as Hyvä ${txtpur}${hyva_version}${txtcyn} Theme${txtrst}"
+    if [[ ! -d "${HYVA_PATH}/web/tailwind/node_modules" ]]; then
+        echo -e "\n${txtylw}Install missing node_modules ... ${txtrst}"
+        cd "${HYVA_PATH}"/web/tailwind || exit
+        npm ci
+        if [[ -d "./node_modules" ]]; then
+            echo -e "${txtgrn}${ICON_SUCCESS} Done. ${txtrst}"
+            cd - >/dev/null || exit
+        else
+            echo -e "${txtred}${ICON_ERROR} Could not install node_modules. Please check ${HYVA_PATH}/web/tailwind/node_modules ${txtrst}"
+            cd - >/dev/null || exit
+        fi
+    fi
+
+    cd "${HYVA_PATH}"/web/tailwind || exit
+
+    if [[ ${hyva_version} > 1.2.0 ]]; then
+        npm run build
+    else
+        npm run build-prod
+    fi
+
+    cd - >/dev/null || exit
+    hyvaConfigGenerate
+    echo -e "\n${txtgrn}${ICON_SUCCESS}${bldcyn} Hyvä Theme Update for ${txtpur}${HYVA_NAME}${txtcyn} finished${txtrst}\n\n\n"
+}
+
 # Build all themes in config-themes.yaml
 if [[ $1 == "build" && $2 == "" || $1 == "b" && $2 == "" || $1 == "build" && $2 == "-f" || $1 == "b" && $2 == "-f" ]]; then
 
