@@ -34,7 +34,7 @@ if [[ ${found} == true ]]; then
     echo -e "  ${txtylw}-f${txtrst}                    Force the build command to run without yes/no confirmation\n"
 
     echo -e "${txtylw}\nAliases:${txtrst}"
-    echo -e "  ${txtylw}f, fe${txtrst}\n"
+    echo -e "  f, fe"
 
     if [[ -n ${THEMES_IN_CONFIG} ]]; then
         echo -e "${txtpur}\nAvailable themes:${txtrst}"
