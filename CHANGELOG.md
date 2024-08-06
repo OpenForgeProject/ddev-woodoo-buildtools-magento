@@ -4,7 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ---
 
-### UNRELEASED
+## UNRELEASED
+
 -   added alias annotations for 'ddev f' and 'ddev fe' commands in `commands/web/frontend`
 -   updated `README.md` to mention the aliases 'ddev f' and 'ddev fe' for the frontend commands
 -   updated `commands/web/woodoo_components/help` to list the aliases 'ddev f' and 'ddev fe' for the frontend commands
@@ -12,7 +13,9 @@ All notable changes to this project will be documented in this file.
 ---
 
 ## Latest Release
+
 ### 1.7.0
+
 -   updated `README.md` - Thanks to [@t-muir] & [@Morgy93]
 -   updated Supporter in `README.md` - Thanks to [@tniebergall]
 -   updated `.trunk` linter settings
@@ -26,13 +29,15 @@ All notable changes to this project will be documented in this file.
 -   remove "whats new" hint for older Woodoo Versions (comes with 1.4.0)
 -   add `.vscode` settings file
 
-This release has __no braking changes__ and is fully compatible with existing `.ddev/config-themes.yaml`
+This release has **no braking changes** and is fully compatible with existing `.ddev/config-themes.yaml`
 
 ### 1.6.5
+
 -   fix an issue when reading `..theme/composer.json` to determine which Hyva version to use through composer.json
 -   add some GitHub Status-Badges to `README.md`
 
 ### 1.6.4
+
 -   updating wording - Thanks to @andreas-penner-basecom
 -   changed wget command to install latest version
 
