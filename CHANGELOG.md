@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 ---
 
+### UNRELEASED
+-   added alias annotations for 'ddev f' and 'ddev fe' commands in `commands/web/frontend`
+-   updated `README.md` to mention the aliases 'ddev f' and 'ddev fe' for the frontend commands
+-   updated `commands/web/woodoo_components/help` to list the aliases 'ddev f' and 'ddev fe' for the frontend commands
+
+---
+
 ## Latest Release
 ### 1.7.0
 -   updated `README.md` - Thanks to [@t-muir] & [@Morgy93]

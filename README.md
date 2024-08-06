@@ -92,6 +92,9 @@ Command:
 
 Option:
   -f                    Force the build command to run without yes/no confirmation
+
+Aliases:
+  f, fe
 ```
 
 ## Feature request

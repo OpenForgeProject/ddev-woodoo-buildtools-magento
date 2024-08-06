@@ -4,6 +4,7 @@
 ## Description: Run the frontend command inside the web container
 ## Usage: frontend [flags] [args]
 ## Example: "ddev frontend"
+## Aliases: f, fe
 ## ExecRaw: true
 ## HostWorkingDir: false
 
