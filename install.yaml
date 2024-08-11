@@ -1,16 +1,16 @@
 name: ddev-woodoo-buildtools-magento
 
 pre_install_actions:
-# https://github.com/Morgy93/ddev-gum
-- if ! ddev get --installed | grep -q "Morgy93/ddev-gum"; then ddev get Morgy93/ddev-gum; fi
-- if [ -f .ddev/commands/web/frontend ]; then rm .ddev/commands/web/frontend; echo "- Existing frontend command replaced."; fi
+    # https://github.com/Morgy93/ddev-gum
+    - if ! ddev get --installed | grep -q "Morgy93/ddev-gum"; then ddev get Morgy93/ddev-gum; fi
+    - if [ -f .ddev/commands/web/frontend ]; then rm .ddev/commands/web/frontend; echo "- Existing frontend command replaced."; fi
 
 project_files:
-- commands/web/woodoo_components/
-- commands/web/frontend
-- commands/host/frontend-update
+    - commands/web/woodoo_components/
+    - commands/web/frontend
+    - commands/host/frontend-update
 
 post_install_actions:
-- echo -n "Woodoo Buildtools installed. Run 'ddev restart' to apply changes."
-- echo -n "After restart you can use 'ddev frontend' to run frontend commands."
-- echo "For more information visit https://github.com/dermatz/ddev-woodoo-buildtools-magento"
+    - echo -n "Woodoo Buildtools installed. Run 'ddev restart' to apply changes."
+    - echo -n "After restart you can use 'ddev frontend' to run frontend commands."
+    - echo "For more information visit https://github.com/dermatz/ddev-woodoo-buildtools-magento"
