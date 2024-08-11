@@ -9,6 +9,9 @@ All notable changes to this project will be documented in this file.
 -   added alias annotations for 'ddev f' and 'ddev fe' commands in `commands/web/frontend` (_requires DDEV >= 1.23.4_)
 -   updated `README.md` to mention the aliases 'ddev f' and 'ddev fe' for the frontend commands
 -   updated `commands/web/woodoo_components/help` to list the aliases 'ddev f' and 'ddev fe' for the frontend commands
+-   remove existing `frontend` command to install woodoo correctly
+-   add replace notification in `README.md` if frontend command exist in `.ddev/commands/web/frontend`
+-   add post installation action with relevant next steps notifications
 
 ---
 

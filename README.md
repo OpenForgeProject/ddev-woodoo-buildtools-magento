@@ -31,6 +31,8 @@ Special thanks to e3n GmbH & Co. KG for your Support!
 
 ##### Latest stable version (recommended)
 
+Be sure, if there is an existing `.ddev/commands/web/frontend` command, it will be replaced with this woodoo frontend command.
+
 ```shell
 ddev get dermatz/ddev-woodoo-buildtools-magento
 ```
