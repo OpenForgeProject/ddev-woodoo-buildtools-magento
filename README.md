@@ -82,6 +82,7 @@ Command:
   help, -help, -h       Displays help page
   version, --version    Show version
   check, selftest       Frontend Self-Test
+  frontend-share        Retrieve ngrok URL from active 'ddev share' and update Magento base URL
   frontend-update       Update to the latest Version (stable Version)
   frontend-update -dev  Update to the latest Main-Branch Version (not recommended)
   themes                List all available themes that are configured in .ddev/config-themes.yaml
