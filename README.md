@@ -125,11 +125,10 @@ To watch for CSS and JS changes in a specific theme, use:
 ddev frontend watch <theme_code>
 ```
 
-
 ## Troubleshooting Tips
 
-- Ensure that your theme paths in `.ddev/config-themes.yaml` are correct and relative to your project root.
-- If you encounter any issues, try running `ddev frontend selftest` to perform a self-check and identify potential problems.
+-   Ensure that your theme paths in `.ddev/config-themes.yaml` are correct and relative to your project root.
+-   If you encounter any issues, try running `ddev frontend selftest` to perform a self-check and identify potential problems.
 
 ## Feature request
 

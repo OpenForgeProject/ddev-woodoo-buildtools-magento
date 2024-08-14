@@ -172,4 +172,4 @@ if [[ ($1 == "build" || $1 == "b") && $2 != "" && $2 != "-f" ]]; then
         clearStaticFiles
 
     fi
-}
+fi

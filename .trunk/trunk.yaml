@@ -20,14 +20,14 @@ lint:
     enabled:
         - shellcheck@0.10.0
         - actionlint@1.7.1
-        - checkov@3.2.200
+        - checkov@3.2.223
         - git-diff-check
         - markdownlint@0.41.0
         - oxipng@9.1.2
         - prettier@3.3.3
         - shfmt@3.6.0
-        - trivy@0.53.0
-        - trufflehog@3.80.1
+        - trivy@0.54.1
+        - trufflehog@3.81.8
         - yamllint@1.35.1
 actions:
     disabled:
