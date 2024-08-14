@@ -27,3 +27,24 @@
 ## License
 a) This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details
 b) All of your contributions will be also licensed under the MIT License
+
+## Code Formatting
+- Indent code with 4 spaces
+- Use meaningful variable and function names
+- Keep lines under 80 characters where possible
+
+## Naming Conventions
+- Use camelCase for variable and function names
+- Use UPPER_CASE for constants
+- Use descriptive names for functions and variables
+
+## Best Practices
+- Write clear and concise comments
+- Avoid global variables
+- Use functions to encapsulate code
+- Test your code thoroughly before submitting
+
+## Code Review Process
+- Submit your pull request for review
+- Address any feedback or requested changes
+- Ensure all tests pass before merging

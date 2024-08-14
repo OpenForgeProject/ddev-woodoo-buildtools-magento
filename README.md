@@ -97,6 +97,58 @@ Aliases:
   f, fe
 ```
 
+## Detailed Usage Examples
+
+Here are some detailed usage examples to help you get started:
+
+### Building All Themes
+
+To build all themes configured in `.ddev/config-themes.yaml`, run:
+
+```shell
+ddev frontend build
+```
+
+### Building a Specific Theme
+
+To build a specific theme, use the theme code as an argument:
+
+```shell
+ddev frontend build <theme_code>
+```
+
+### Watching for Changes
+
+To watch for CSS and JS changes in a specific theme, use:
+
+```shell
+ddev frontend watch <theme_code>
+```
+
+## Common Issues and Solutions
+
+### Issue: Missing Node Modules
+
+**Solution:** If you encounter an error related to missing Node modules, run the following command to install the dependencies:
+
+```shell
+npm ci
+```
+
+### Issue: Grunt Not Found
+
+**Solution:** If Grunt is not found, you can install it globally using:
+
+```shell
+npm install -g grunt
+```
+
+## Troubleshooting Tips
+
+- Ensure that your theme paths in `.ddev/config-themes.yaml` are correct and relative to your project root.
+- If you encounter any issues, try running `ddev frontend selftest` to perform a self-check and identify potential problems.
+- For more detailed logs, you can enable debug mode by setting the `debug_enabled` input to `true` in the GitHub Actions workflow.
+
 ## Feature request
 
 Submit your [Feature Request](https://github.com/dermatz/ddev-woodoo-buildtools-magento/issues) by adding a new issue and add a label with `feature-request`.
