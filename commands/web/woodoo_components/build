@@ -58,6 +58,22 @@ function buildMagentoDefault() {
 }
 
 # Builds the Hyvä theme specified by the first argument
+# This function checks for necessary dependencies like Node modules, installs them if missing,
+# and then runs the appropriate npm build command based on the Hyvä version.
+
+# Parameters:
+# $1: The path to the Hyvä theme
+# $2: The theme code of the Hyvä theme
+
+# Builds the Hyvä theme specified by the first argument
+# This function checks for necessary dependencies like Node modules, installs them if missing,
+# and then runs the appropriate npm build command based on the Hyvä version.
+
+# Parameters:
+# $1: The path to the Hyvä theme
+# $2: The theme code of the Hyvä theme
+
+# Builds the Hyvä theme specified by the first argument
 # This function checks for necessary dependencies like Node modules, installs them if missing, and then runs the appropriate npm build command based on the Hyvä version.
 function buildHyva() {
     local HYVA_PATH=$1

@@ -97,9 +97,9 @@ Aliases:
   f, fe
 ```
 
-## Detailed Usage Examples
+## Usage Examples
 
-Here are some detailed usage examples to help you get started:
+Here are some usage examples to help you get started:
 
 ### Building All Themes
 
@@ -125,29 +125,11 @@ To watch for CSS and JS changes in a specific theme, use:
 ddev frontend watch <theme_code>
 ```
 
-## Common Issues and Solutions
-
-### Issue: Missing Node Modules
-
-**Solution:** If you encounter an error related to missing Node modules, run the following command to install the dependencies:
-
-```shell
-npm ci
-```
-
-### Issue: Grunt Not Found
-
-**Solution:** If Grunt is not found, you can install it globally using:
-
-```shell
-npm install -g grunt
-```
 
 ## Troubleshooting Tips
 
 - Ensure that your theme paths in `.ddev/config-themes.yaml` are correct and relative to your project root.
 - If you encounter any issues, try running `ddev frontend selftest` to perform a self-check and identify potential problems.
-- For more detailed logs, you can enable debug mode by setting the `debug_enabled` input to `true` in the GitHub Actions workflow.
 
 ## Feature request
 

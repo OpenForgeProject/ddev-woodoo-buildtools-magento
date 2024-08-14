@@ -32,6 +32,7 @@ b) All of your contributions will be also licensed under the MIT License
 - Indent code with 4 spaces
 - Use meaningful variable and function names
 - Keep lines under 80 characters where possible
+- User `trunk check` to lint your code
 
 ## Naming Conventions
 - Use camelCase for variable and function names
@@ -43,6 +44,7 @@ b) All of your contributions will be also licensed under the MIT License
 - Avoid global variables
 - Use functions to encapsulate code
 - Test your code thoroughly before submitting
+- Add Description to functions and describe parameters
 
 ## Code Review Process
 - Submit your pull request for review
