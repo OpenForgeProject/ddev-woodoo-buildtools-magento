@@ -6,9 +6,10 @@ All notable changes to this project will be documented in this file.
 
 ## UNRELEASED 1.8.0
 
--   added alias annotations for 'ddev f' and 'ddev fe' commands in `commands/web/frontend` (_requires DDEV >= 1.23.4_)
--   updated `README.md` to mention the aliases 'ddev f' and 'ddev fe' for the frontend commands
--   updated `commands/web/woodoo_components/help` to list the aliases 'ddev f' and 'ddev fe' for the frontend commands
+-   added alias annotations for 'ddev f' and 'ddev fe' commands in `commands/web/frontend` (_requires DDEV >= 1.23.4_) [@Morgy93]
+-   updated `README.md` to mention the aliases 'ddev f' and 'ddev fe' for the frontend commands [@Morgy93]
+-   updated `README.md` with usage examples [@Morgy93]
+-   updated `commands/web/woodoo_components/help` to list the aliases 'ddev f' and 'ddev fe' for the frontend commands [@Morgy93]
 -   refactored 'commands/web/woodoo_components/functions` to add all woodoo functions to this file
 -   remove `commands/web/woodoo_components/checks` (was moved to `functions`)
 -   remove not valid characters in `.vscode/settings.json`
