@@ -82,14 +82,6 @@ jobs:
             - name: tests
               run: bats tests
 
-            - name: Run tests for edge cases
-              run: bats tests/edge_cases.bats
-
-            - name: Improved error handling
-              run: |
-                  set -e
-                  bats tests || { echo "Tests failed"; exit 1; }
-
             # keepalive-workflow adds a dummy commit if there's no other action here, keeps
             # GitHub from turning off tests after 60 days
             - uses: gautamkrishnar/keepalive-workflow@v1
