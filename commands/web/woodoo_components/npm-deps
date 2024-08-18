@@ -1,0 +1,76 @@
+#!/bin/bash
+#ddev-generated - Do not modify this file; your modifications will be overwritten.
+
+# Function to check if npm check prerequisites are met
+# Parameters:
+#   $1: The theme path
+function checkPrequisites() {
+    local THEME_PATH=$1
+
+    if [[ ! -d "${THEME_PATH}/web/tailwind" ]]; then
+        echo -e "${txtred}${ICON_ERROR} ${THEME_PATH}/web/tailwind does not exist.${txtrst}"
+        exit 1
+    fi
+
+    cd "${THEME_PATH}/web/tailwind" || exit
+
+    if ! command -v ncu &>/dev/null; then
+        echo -e "${txtylw}${ICON_WARNING} npm-check-updates is not installed. Run 'ddev restart' to install.${txtrst}"
+        npm install -g npm-check-updates
+    fi
+}
+
+# Function to update npm dependencies using npm-check-updates
+# Parameters:
+#   $1: The theme path
+function updateNpmDeps() {
+    local THEME_PATH=$1
+
+    checkPrequisites "${THEME_PATH}"
+
+    echo -e "${txtcyn}${ICON_ARROW_RIGHT} Updating npm dependencies...${txtrst}"
+    ncu -u
+    npm install
+
+    echo -e "${txtgrn}${ICON_SUCCESS} npm dependencies updated.${txtrst}"
+    cd - >/dev/null || exit
+}
+
+# Function to check outdated npm dependencies using npm-check-updates
+# Parameters:
+#   $1: The theme path
+function checkNpmDeps() {
+    local THEME_PATH=$1
+
+    checkPrequisites "${THEME_PATH}"
+
+    echo -e "${txtcyn}${ICON_ARROW_RIGHT} Checking outdated npm dependencies...${txtrst}"
+    ncu
+
+    echo -e "${txtgrn}${ICON_SUCCESS} npm dependencies check completed.${txtrst}"
+    cd - >/dev/null || exit
+}
+
+# Add a command to update npm dependencies for a specific theme or all themes
+if [[ $1 == "update-npm-deps" && $2 != "" ]]; then
+    THEME_TO_UPDATE=$(grep -oP "(?<=${2}: ).*" "${PROJECT_CONFIG_FILE}" | cut -d ' ' -f 1 | tr -d '"')
+    checkHyva "${THEME_TO_UPDATE}"
+    if [[ ${HYVA} == true ]]; then
+        updateNpmDeps "${THEME_TO_UPDATE}"
+    else
+        echo -e "${txtred}${ICON_ERROR} ${2} is not a Hyvä theme. Please update manually.${txtrst}"
+    fi
+    exit 0
+fi
+
+# Add a command to check outdated npm dependencies for a specific theme or all themes
+if [[ $1 == "check-npm-deps" && $2 != "" ]]; then
+    THEME_TO_CHECK=$(grep -oP "(?<=${2}: ).*" "${PROJECT_CONFIG_FILE}" | cut -d ' ' -f 1 | tr -d '"')
+    checkHyva "${THEME_TO_CHECK}"
+    if [[ ${HYVA} == true ]]; then
+        checkNpmDeps "${THEME_TO_CHECK}"
+    else
+        echo -e "${txtred}${ICON_ERROR} ${2} is not a Hyvä theme. Please check manually.${txtrst}"
+    fi
+    exit 0
+fi
