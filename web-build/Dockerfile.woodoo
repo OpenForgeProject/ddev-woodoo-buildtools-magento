@@ -1,0 +1,4 @@
+#ddev-generated
+
+# https://github.com/raineorshine/npm-check-updates
+RUN npm install -g npm-check-updates
