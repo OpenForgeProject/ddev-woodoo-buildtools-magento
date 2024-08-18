@@ -14,9 +14,9 @@ function checkPrequisites() {
 
     cd "${THEME_PATH}/web/tailwind" || exit
 
-    if ! command -v ncu &>/dev/null; then
-        echo -e "${txtylw}${ICON_WARNING} npm-check-updates is not installed. Run 'ddev restart' to install.${txtrst}"
-        npm install -g npm-check-updates
+    if ! command -v ncuu &>/dev/null; then
+        echo -e "${txtylw}${ICON_WARNING} npm-check-updates is not installed. Run ${txtcyn}ddev restart${txtylw} to install.${txtrst}"
+        exit 1
     fi
 }
 
