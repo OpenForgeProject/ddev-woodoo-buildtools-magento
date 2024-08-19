@@ -115,7 +115,9 @@ txtrst='\033[0m' # Text Reset
 
 **Result:**
 
-<div style="background-color: #1E293B;color: white; font-family:courier;border:1px solid #64748B;padding:10px;border-radius:5px; margin: 10px 0 20px;">$ Thank <span style="color:green">you</span> for use <span style="color:cyan">Woodoo Buildtools</span>!</div>
+<div style="background-color:#1E293B;color:white;font-family:courier;border:1px solid #64748B;padding:10px;border-radius:5px;margin: 10px 0 20px;">
+   Thank <span style="color:green">you</span> for use <span style="color:cyan">Woodoo Buildtools</span>!
+</div>
 
 Use `${txtrst}` to reset the color back to default terminal color.
 
