@@ -111,12 +111,12 @@ txtrst='\033[0m' # Text Reset
 
 ### Usage
 
-**Example:** `echo -n "Thank ${txtgrn}you${txtrst} for use ${txtcyn}Woodoo Buildtools${txtrst}!"`
+**Example:** `echo -n "Thank ${txtgrn}you${txtrst} for using ${txtcyn}Woodoo Buildtools${txtrst}!"`
 
 **Result:**
 
 <div style="background-color:#1E293B;color:white;font-family:courier;border:1px solid #64748B;padding:10px;border-radius:5px;margin: 10px 0 20px;">
-   Thank <span style="color:green">you</span> for use <span style="color:cyan">Woodoo Buildtools</span>!
+   Thank <span style="color:green">you</span> for using <span style="color:cyan">Woodoo Buildtools</span>!
 </div>
 
 Use `${txtrst}` to reset the color back to default terminal color.
