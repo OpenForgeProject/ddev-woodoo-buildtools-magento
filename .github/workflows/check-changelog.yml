@@ -12,7 +12,9 @@ jobs:
 
     - name: Check for changelog entry
       run: |
-        if ! git diff --name-only HEAD^ HEAD | grep -q 'CHANGELOG.md'; then
+        BASE_BRANCH=$(jq -r .pull_request.base.ref < $GITHUB_EVENT_PATH)
+        MERGE_BASE=$(git merge-base HEAD $BASE_BRANCH)
+        if ! git diff --name-only $MERGE_BASE HEAD | grep -q 'CHANGELOG.md'; then
           echo "No changelog entry found. Please add an entry to CHANGELOG.md."
           exit 1
         fi
