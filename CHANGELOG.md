@@ -7,7 +7,7 @@ All notable changes to this project will be documented in this file.
 ## UNRELEASED 1.9.0
 
 -   added documentation for color assignments in `CONTRIBUTING.md` to standardize the use of color variables in bash scripts
--   added provided detailed color definitions and a usage example in the new "Color Assignments" section
+-   added detailed color definitions and a usage example in the new "Color Assignments" section
 
 ---
 
