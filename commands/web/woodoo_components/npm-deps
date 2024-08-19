@@ -51,7 +51,7 @@ function checkNpmDeps() {
     cd - >/dev/null || exit
 }
 
-# Add a command to update npm dependencies for a specific theme or all themes
+# A command to update npm dependencies for a specific theme
 if [[ $1 == "update-npm-deps" && $2 != "" ]]; then
     THEME_TO_UPDATE=$(grep -oP "(?<=${2}: ).*" "${PROJECT_CONFIG_FILE}" | cut -d ' ' -f 1 | tr -d '"')
     checkHyva "${THEME_TO_UPDATE}"
@@ -63,7 +63,7 @@ if [[ $1 == "update-npm-deps" && $2 != "" ]]; then
     exit 0
 fi
 
-# Add a command to check outdated npm dependencies for a specific theme or all themes
+# A command to check outdated npm dependencies for a specific theme
 if [[ $1 == "check-npm-deps" && $2 != "" ]]; then
     THEME_TO_CHECK=$(grep -oP "(?<=${2}: ).*" "${PROJECT_CONFIG_FILE}" | cut -d ' ' -f 1 | tr -d '"')
     checkHyva "${THEME_TO_CHECK}"
