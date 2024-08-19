@@ -16,7 +16,7 @@ All notable changes to this project will be documented in this file.
 ### 1.8.0
 
 -   added alias annotations for 'ddev f' and 'ddev fe' commands in `commands/web/frontend` (_requires DDEV >= 1.23.4_) [@Morgy93]
--   added housekeeping task to `install.yaml` to `pre_install_actions` and remove old checks file if exists
+-   added housekeeping task to `install.yaml` and `pre_install_actions` and removed old check if file exists
 -   updated `README.md` to mention the aliases 'ddev f' and 'ddev fe' for the frontend commands [@Morgy93]
 -   updated `README.md` with usage examples [@Morgy93]
 -   updated `commands/web/woodoo_components/help` to list the aliases 'ddev f' and 'ddev fe' for the frontend commands [@Morgy93]
