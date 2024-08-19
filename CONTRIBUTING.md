@@ -7,7 +7,7 @@
 ## Submit Pull-Requests
 
 -   Create an [Issue](https://github.com/dermatz/ddev-woodoo-buildtools-magento/issues) as either a feature request or bug report. Please ensure the ticket includes all relevant information
--   Fork this Project and create a new branch for your work and releated to your ticket
+-   Fork this project, then create a new branch for your work that is related to the issue you created
 -   Commit your changes to the new branch and open a Pull Request to this repository branch: `main`
 
 ## Coding Quality
