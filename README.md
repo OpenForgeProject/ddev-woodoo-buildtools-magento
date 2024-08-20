@@ -1,6 +1,7 @@
-# [DDEV] Woodoo Frontend Buildtools for Magento & Hyvä <img src="https://img.shields.io/github/v/release/dermatz/ddev-woodoo-buildtools-magento">
+# [DDEV] Woodoo Frontend Buildtools for Magento & Hyvä
 
-[![tests](https://github.com/dermatz/ddev-woodoo-buildtools-magento/actions/workflows/tests.yml/badge.svg)](https://github.com/dermatz/ddev-woodoo-buildtools-magento/actions/workflows/tests.yml) <img src="https://img.shields.io/librariesio/github/dermatz/ddev-woodoo-buildtools-magento" alt="Dependencies"> <img src="https://img.shields.io/github/last-commit/dermatz/ddev-woodoo-buildtools-magento" alt="Last commit date Badge"> <img src="https://img.shields.io/github/sponsors/dermatz" alt="Sponsors">
+[![tests](https://github.com/dermatz/ddev-woodoo-buildtools-magento/actions/workflows/tests.yml/badge.svg)](https://github.com/dermatz/ddev-woodoo-buildtools-magento/actions/workflows/tests.yml) <img src="https://img.shields.io/librariesio/github/dermatz/ddev-woodoo-buildtools-magento" alt="Dependencies"> <img src="https://img.shields.io/github/last-commit/dermatz/ddev-woodoo-buildtools-magento" alt="Last commit date Badge">
+<img src="https://img.shields.io/github/v/release/dermatz/ddev-woodoo-buildtools-magento" alt="Release-Badge"> <img src="https://img.shields.io/github/sponsors/dermatz" alt="Sponsors"> [<img src="https://img.shields.io/badge/Discord-Join%20Chat-orange" alt="Join our Discord">](https://discord.gg/H5CjMXQQHn)
 
 ---
 
