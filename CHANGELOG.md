@@ -222,5 +222,3 @@ This is the first stable release with most common functions to build Magento 2 P
 -   add Woodoo selftest
 -   add theme checks
 -   add init function to setup woodoo
-
--   add init function to setup woodoo
