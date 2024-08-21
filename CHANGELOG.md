@@ -212,7 +212,7 @@ This release has **no braking changes** and is fully compatible with existing `.
 This is the first stable release with most common functions to build Magento 2 Projects with or without hyva.
 
 -   add ddev v1.21.6 support
--   add dMagento 2 CSS/JS Watcher
+-   add Magento 2 CSS/JS Watcher
 -   add Hyvä Watcher
 -   add Magento 2 build functions
 -   add grunt self-repair during Magento 2 builds if grunt clean or less was not successful
