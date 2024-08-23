@@ -120,14 +120,15 @@ Use `${txtrst}` to reset the color back to default terminal color.
 
 ---
 
-## VSCODE USERS
+## VSCode Users
 
-VSCode User automaticly use our VSCode Workspace Settings, located in `.vscode/settings.json`.
-We support [Git commit message helper](https://marketplace.visualstudio.com/items?itemName=D3skdev.git-commit-message-helper) to add
-correct commit message with prefixes based on your branch name given from github with issue-id.
-e.G. `#123 - Commit Message ...`
+VSCode users automatically apply the workspace settings defined in `.vscode/settings.json`. 
 
-![Demo Git commit message helper](https://github.com/d3skdev/git-prefix/raw/master/images/demo.gif)
+To streamline your workflow, we recommend using the [Git Commit Message Helper](https://marketplace.visualstudio.com/items?itemName=D3skdev.git-commit-message-helper) extension. This tool ensures your commit messages are formatted correctly with the appropriate prefixes, based on the branch name and issue ID from GitHub.
+
+For example: `#123 - Commit Message ...`
+
+![Git Commit Message Helper Demo](https://github.com/d3skdev/git-prefix/raw/master/images/demo.gif)
 
 ---
 
