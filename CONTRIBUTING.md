@@ -135,7 +135,7 @@ For example: `#123 - Commit Message ...`
 ## Best Practices
 
 -   Write clear and concise comments
--   Avoid global variables, use `local VARIABLE` if possible
+-   Avoid global variables, use `local VARIABLE` whenever possible
 -   Use functions to encapsulate code
 -   Add Description to functions and describe parameters
 -   Test your code thoroughly before submitting
