@@ -15,14 +15,18 @@ function buildMagentoDefault() {
     fi
 
     # check if grunt exist
-    if ! command -v grunt &>/dev/null; then
+    if "${DDEV_COMPOSER_ROOT}/node_modules/.bin/grunt" --version &>/dev/null; then
+        echo -e "${txtcyn}${ICON_SUCCESS} Grunt is installed${txtrst}"
+    else
         echo -e "\n\n${txtcyn}${ICON_ERROR} Install missing Grunt${txtrst}\n\n"
-
-        npm install grunt
-        sudo npm install grunt -g
+        npm install grunt # install grunt locally in ddev container for the project
 
         if ! command -v grunt &>/dev/null; then
-            echo -e "${txtred}${ICON_ERROR} Could not install grunt. Please check your installation.${txtrst}"
+            sudo npm install grunt -g
+        fi
+
+        if ! command -v grunt &>/dev/null; then
+            echo -e "${txtred}${ICON_ERROR} Could not install grunt global. Please install grunt manually ${txtcyn}sudo npm install grunt -g ${txtrst}."
         else
             echo -e "${txtcyn}${ICON_SUCCESS} Grunt installed successfully.${txtrst}"
         fi

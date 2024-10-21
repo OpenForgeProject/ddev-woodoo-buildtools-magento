@@ -4,13 +4,14 @@ All notable changes to this project will be documented in this file.
 
 ---
 
-## UNRELEASED 1.9.0
+## UNRELEASED 1.8.1
 
 -   added documentation for color assignments in `CONTRIBUTING.md` to standardize the use of color variables in bash scripts
 -   added detailed color definitions and a usage example in the new "Color Assignments" section
 -   added Github Action to check if Pull Request contains `CHANGELOG.md` updates
 -   added Discord invite link to `README.md` and `CONTRIBUTING.md`
 -   changed `MIT-LICENSES.md` to `LICENSE` and set this tool under GNU GENERAL PUBLIC LICENSE 3.0
+-   fixed issue to check and install grunt correctly if it is missing [https://github.com/dermatz/ddev-woodoo-buildtools-magento/issues/50]
 
 ---
 
