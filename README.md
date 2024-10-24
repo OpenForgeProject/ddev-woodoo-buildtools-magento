@@ -26,11 +26,27 @@ _>> Build all your Magento themes at once, with Magic, build with Woodoo!_
 
 ##### Latest stable version (recommended)
 
+For DDEV v1.23.5 or above run
+
+```shell
+ddev add-on get dermatz/ddev-woodoo-buildtools-magento
+```
+
+For earlier versions of DDEV run
+
 ```shell
 ddev get dermatz/ddev-woodoo-buildtools-magento
 ```
 
 ##### Latest Developer-Preview (Main-Branch - unreleased) - can be instable!
+
+For DDEV v1.23.5 or above run
+
+```shell
+ddev add-on get https://github.com/dermatz/ddev-woodoo-buildtools-magento/archive/refs/heads/main.tar.gz
+```
+
+For earlier versions of DDEV run
 
 ```shell
 ddev get https://github.com/dermatz/ddev-woodoo-buildtools-magento/archive/refs/heads/main.tar.gz
