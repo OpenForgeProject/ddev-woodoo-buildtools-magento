@@ -51,8 +51,8 @@ function checkNpmDeps() {
     cd - >/dev/null || exit
 }
 
-# A command to update npm dependencies for a specific theme
-if [[ $1 == "update-npm-deps" && $2 != "" ]]; then
+# A command to update npm dependencies for a specific Hyvä theme
+if [[ $1 == "hyva-npm-update" && $2 != "" ]]; then
     THEME_TO_UPDATE=$(grep -oP "(?<=${2}: ).*" "${PROJECT_CONFIG_FILE}" | cut -d ' ' -f 1 | tr -d '"')
     checkHyva "${THEME_TO_UPDATE}"
     if [[ ${HYVA} == true ]]; then
@@ -61,6 +61,18 @@ if [[ $1 == "update-npm-deps" && $2 != "" ]]; then
         echo -e "${txtred}${ICON_ERROR} ${2} is not a Hyvä theme. Please update manually.${txtrst}"
     fi
     exit 0
+elif [[ $1 == "hyva-npm-update" && $2 == "" ]]; then
+    checkThemePathExists silent
+    THEMES_TO_UPDATE=$(gum choose --cursor-prefix "[ ] " --unselected-prefix "[ ] " --selected-prefix "[✓] " --no-limit $THEMES_IN_CONFIG)
+    for THEME_CODE in ${THEMES_TO_UPDATE}; do
+        THEMES_TO_UPDATE=$(echo $(grep -oP '(?<='$THEME_CODE': ).*' $PROJECT_CONFIG_FILE) | cut -d ' ' -f 1 | sed 's/"//g')
+        checkHyva "${THEMES_TO_UPDATE}"
+        if [[ ${HYVA} == true ]]; then
+            checkNpmDeps "${THEMES_TO_UPDATE}"
+        else
+            echo -e "${txtred}${ICON_ERROR} ${THEME_CODE} is not a Hyvä theme. Please check manually.${txtrst}"
+        fi
+    done
 fi
 
 # A command to check outdated npm dependencies for a specific theme
