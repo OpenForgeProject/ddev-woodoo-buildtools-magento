@@ -2,7 +2,7 @@ name: ddev-woodoo-buildtools-magento
 
 pre_install_actions:
     # https://github.com/Morgy93/ddev-gum
-    - if ! ddev get --installed | grep -q "Morgy93/ddev-gum"; then ddev get Morgy93/ddev-gum; fi
+    - if ! ddev add-on get --installed | grep -q "Morgy93/ddev-gum"; then ddev add-on get Morgy93/ddev-gum; fi
     - "if [ -f .ddev/commands/web/woodoo_components/checks ]; then rm .ddev/commands/web/woodoo_components/checks && echo 'Woodoo Housekeeping: removed old file .ddev/commands/web/woodoo_components/checks'; fi"
 
 project_files:

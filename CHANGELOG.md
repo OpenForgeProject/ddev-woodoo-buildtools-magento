@@ -6,6 +6,8 @@ All notable changes to this project will be documented in this file.
 
 ## UNRELEASED 1.9.0
 
+-   Updated to use `ddev add-on get` for versions of DDEV prior to v1.23.5
+
 ---
 
 ## Latest Release
