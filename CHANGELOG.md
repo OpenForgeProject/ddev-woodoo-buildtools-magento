@@ -9,6 +9,7 @@ All notable changes to this project will be documented in this file.
 -   Updated to use `ddev add-on get` for versions of DDEV prior to v1.23.5
 -   updated trunk plugin and linters
 -   fix typo in several files
+
 ---
 
 ## Latest Release
