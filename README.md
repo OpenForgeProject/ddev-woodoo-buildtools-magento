@@ -89,7 +89,7 @@ If you want to get the latest developer preview (can be instable) use `ddev fron
 Usage: ddev frontend [command] [option or theme]
 
 Command:
-  init, install         Initial Woodoo Setup to read all themes from dataabase and write to .ddev/config-themes.yaml
+  init, install         Initial Woodoo Setup to read all themes from database and write to .ddev/config-themes.yaml
   help, -help, -h       Displays help page
   version, --version    Show version
   check, selftest       Frontend Self-Test

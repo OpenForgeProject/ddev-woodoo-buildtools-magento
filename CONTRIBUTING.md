@@ -35,7 +35,7 @@ b) All of your contributions will be also licensed under the MIT License
 -   Indent code with 4 spaces
 -   Use meaningful variable and function names
 -   Keep lines under 80 characters where possible
--   User `trunk check` to lint your code
+-   Use `trunk check` to lint your code
 
 ---
 

@@ -8,7 +8,7 @@ All notable changes to this project will be documented in this file.
 
 -   Updated to use `ddev add-on get` for versions of DDEV prior to v1.23.5
 -   updated trunk plugin and linters
-
+-   fix typo in several files
 ---
 
 ## Latest Release
@@ -18,7 +18,7 @@ All notable changes to this project will be documented in this file.
 -   added documentation for color assignments in `CONTRIBUTING.md` to standardize the use of color variables in bash scripts
 -   added detailed color definitions and a usage example in the new "Color Assignments" section
 -   added Github Action to check if Pull Request contains `CHANGELOG.md` updates
--   added documentation for .vscode settings end supported extentions
+-   added documentation for .vscode settings end supported extensions
 -   added Discord invite link to `README.md` and `CONTRIBUTING.md`
 -   changed `MIT-LICENSES.md` to `LICENSE` and set this tool under GNU GENERAL PUBLIC LICENSE 3.0
 -   fixed issue to check and install grunt correctly if it is missing [https://github.com/dermatz/ddev-woodoo-buildtools-magento/issues/50]
@@ -41,7 +41,7 @@ All notable changes to this project will be documented in this file.
 -   updated `.trunk` linter settings
 -   fixed shell linting issues in several files
 -   improved `ddev frontend` Command with ddev system information
--   improved Hyva Taks sort order ( _NPM Check > Node_Modules Check > reinstall if requrired > Build > Cache refresh_ ..)
+-   improved Hyva Taks sort order ( _NPM Check > Node_Modules Check > reinstall if required > Build > Cache refresh_ ..)
 -   refactored grunt task functions for default Magento projects
 -   refactored Hyva build functions
 -   move all repeatable tasks/functions into new `functions` file
@@ -49,7 +49,7 @@ All notable changes to this project will be documented in this file.
 -   remove "whats new" hint for older Woodoo Versions (comes with 1.4.0)
 -   add `.vscode` settings file
 
-This release has **no braking changes** and is fully compatible with existing `.ddev/config-themes.yaml`
+This release has **no breaking changes** and is fully compatible with existing `.ddev/config-themes.yaml`
 
 ### 1.6.5
 
@@ -67,7 +67,7 @@ This release has **no braking changes** and is fully compatible with existing `.
 
 ### 1.6.2
 
--   improve build process with shorter CLI ouputs
+-   improve build process with shorter CLI outputs
 -   improve code quality by fixing linting issues
 -   improve changelog formatting
 -   set `HostWorkingDir` to `false` [#24](https://github.com/dermatz/ddev-woodoo-buildtools-magento/pull/24) - Thanks to [@Morgy93]
@@ -109,7 +109,7 @@ This release has **no braking changes** and is fully compatible with existing `.
 ### 1.5.0
 
 -   add command parameter `ddev frontend-update -dev` to install latest dev features from main-branch ( _can be unstable!_ )
--   formating readme.md
+-   formatting readme.md
 -   update codestyle and improved lints ( _Shoutout: trunk.io_ ;-))
 
 ---
@@ -139,7 +139,7 @@ This release has **no braking changes** and is fully compatible with existing `.
 -   extend `ddev frontend` command to update automaticly theme-settings from `config.yaml` to `config-themes.yaml`
 -   improved Codestyle and Codequality
 -   add global variables to functions
--   add new dependencie `Morgy93/ddev-gum` to add global gum support (`ddev restart` required) - [@Morgy93](https://github.com/Morgy93)
+-   add new dependency `Morgy93/ddev-gum` to add global gum support (`ddev restart` required) - [@Morgy93](https://github.com/Morgy93)
 -   add Context Menus to `ddev frontend init`, `ddev frontend build` and `ddev frontend watch` commands
 -   now you are able to add and remove themes in the context menu to build or watch. The config-file will be updated automaticly.
 
