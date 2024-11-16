@@ -27,6 +27,7 @@ source ".ddev/commands/web/woodoo_components/functions"
 source ".ddev/commands/web/woodoo_components/themes"
 source ".ddev/commands/web/woodoo_components/build"
 source ".ddev/commands/web/woodoo_components/watch"
+source ".ddev/commands/web/woodoo_components/npm-deps"
 
 ## should be last source
 source ".ddev/commands/web/woodoo_components/selftest"

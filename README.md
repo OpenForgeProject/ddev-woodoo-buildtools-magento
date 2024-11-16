@@ -111,6 +111,8 @@ Command:
   build -f              Builds all configured themes without yes/no confirmation
   build theme           Build a specific theme
   watch theme           Watch for CSS and JS changes in a specific theme
+  update-npm-deps theme Update npm dependencies for a specific theme
+  check-npm-deps theme  Check outdated npm dependencies for a specific theme
 
 Option:
   -f                    Force the build command to run without yes/no confirmation
@@ -145,6 +147,22 @@ To watch for CSS and JS changes in a specific theme, use:
 
 ```shell
 ddev frontend watch <theme_code>
+```
+
+### Updating npm Dependencies
+
+To update npm dependencies for a specific theme, use:
+
+```shell
+ddev frontend update-npm-deps <theme_code>
+```
+
+### Checking Outdated npm Dependencies
+
+To check outdated npm dependencies for a specific theme, use:
+
+```shell
+ddev frontend check-npm-deps <theme_code>
 ```
 
 ## Troubleshooting Tips
