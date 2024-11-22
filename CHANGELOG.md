@@ -14,6 +14,15 @@ All notable changes to this project will be documented in this file.
 
 ## Latest Release
 
+### 1.8.3
+
+-   update dependencies namespaces
+
+### 1.8.2
+
+-   update project respository namespaces
+-   add contributes
+
 ### 1.8.1
 
 -   added documentation for color assignments in `CONTRIBUTING.md` to standardize the use of color variables in bash scripts
