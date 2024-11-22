@@ -1,6 +1,6 @@
 # [DDEV] Woodoo Frontend Buildtools for Magento & Hyvä
 
-[![tests](https://github.com/OpenForgeProject/ddev-woodoo-buildtools-magento/actions/workflows/tests.yml/badge.svg)](https://github.com/OpenForgeProject/ddev-woodoo-buildtools-magento/actions/workflows/tests.yml) <img src="https://img.shields.io/librariesio/github/OpenForgeProject/ddev-woodoo-buildtools-magento" alt="Dependencies"> <img src="https://img.shields.io/github/last-commit/OpenForgeProject/ddev-woodoo-buildtools-magento" alt="Last commit date Badge">
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/ac65544f530a4240a282f4bf988abb90)](https://app.codacy.com/gh/OpenForgeProject/ddev-woodoo-buildtools-magento/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade) [![tests](https://github.com/OpenForgeProject/ddev-woodoo-buildtools-magento/actions/workflows/tests.yml/badge.svg)](https://github.com/OpenForgeProject/ddev-woodoo-buildtools-magento/actions/workflows/tests.yml) <img src="https://img.shields.io/github/last-commit/OpenForgeProject/ddev-woodoo-buildtools-magento" alt="Last commit date Badge">
 <img src="https://img.shields.io/github/v/release/OpenForgeProject/ddev-woodoo-buildtools-magento" alt="Release-Badge"> <img src="https://img.shields.io/github/sponsors/dermatz" alt="Sponsors"> [<img src="https://img.shields.io/badge/Discord-Join%20Chat-orange" alt="Join our Discord">](https://discord.gg/H5CjMXQQHn)
 
 ---
