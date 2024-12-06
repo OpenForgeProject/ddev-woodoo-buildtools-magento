@@ -9,3 +9,4 @@ project_files:
     - commands/web/woodoo_components/
     - commands/web/frontend
     - commands/host/frontend-update
+    - web-build/Dockerfile.woodoo
