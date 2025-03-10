@@ -56,7 +56,12 @@ function checkNpmOutdatedPackages() {
     if [[ -d "$1/web/tailwind/node_modules" ]]; then
         cd "$1/web/tailwind" || exit
         echo -e "${txtcyn}${ICON_ARROW_RIGHT} Check for outdated dependencies ... ${txtrst}\n"
-        npm outdated --silent || npm ci
+        if [[ ! -f package-lock.json ]]; then
+            echo -e "${txtylw}${ICON_WARNING} No package-lock.json found. Running npm install ... ${txtrst}"
+            npm outdated --silent || npm install
+        else
+            npm outdated --silent || npm ci
+        fi
         echo -e "${txtcyn}${ICON_SUCCESS} Dependencies check done.${txtrst}"
         cd - >/dev/null || exit
     fi
@@ -67,7 +72,11 @@ function checkNodeModules() {
     if [[ ! -d "$1/web/tailwind/node_modules" ]]; then
         echo -e "\n${txtylw}${ICON_WARNING} Install missing npm dependencies (node_modules) ... ${txtrst}"
         cd "$1/web/tailwind" || exit
-        npm ci
+        if [[ ! -f package-lock.json ]]; then
+            npm install
+        else
+            npm ci
+        fi
         if [[ -d "./node_modules" ]]; then
             echo -e "\n${txtcyn}${ICON_SUCCESS} npm dependencies installed.${txtrst}"
             cd - >/dev/null || exit
