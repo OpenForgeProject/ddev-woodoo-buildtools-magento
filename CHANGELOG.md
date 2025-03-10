@@ -14,6 +14,10 @@ All notable changes to this project will be documented in this file.
 
 ## Latest Release
 
+### 1.8.4
+
+-   added fallback when `package-lock.json` is missing in Hyvä theme
+
 ### 1.8.3
 
 -   update dependencies namespaces
