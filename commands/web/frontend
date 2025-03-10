@@ -19,15 +19,14 @@ fi
 if [[ ${WOODOO_VERSION} != "${LATEST_WOODOO_VERSION}" ]]; then
     echo -e "🧱 ${txtcyn}Installed Version ${bldred}${WOODOO_VERSION}${txtrst}"
     echo -e "⭐️ ${txtcyn}The newer Version ${bldgrn}${LATEST_WOODOO_VERSION} is available!${txtrst}"
-    echo -e "✅ ${txtgrn}Install update with: ${txtcyn}ddev frontend-update${txtrst}"
-    selftest
+    echo -e "👉 ${txtgrn}Install update with: ${txtcyn}ddev frontend-update${txtrst}"
 fi
 
 source ".ddev/commands/web/woodoo_components/functions"
 source ".ddev/commands/web/woodoo_components/themes"
 source ".ddev/commands/web/woodoo_components/build"
 source ".ddev/commands/web/woodoo_components/watch"
+source ".ddev/commands/web/woodoo_components/selftest"
 
 ## should be last source
-source ".ddev/commands/web/woodoo_components/selftest"
 source ".ddev/commands/web/woodoo_components/help"
