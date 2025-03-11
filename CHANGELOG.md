@@ -13,6 +13,7 @@ All notable changes to this project will be documented in this file.
 - fix: update project architecture output to include OS information
 - fix: ensure script runs inside DDEV environment
 - fix: improve error handling for required files in frontend script
+- fix: improve cache clearing function with error handling
 
 ---
 
