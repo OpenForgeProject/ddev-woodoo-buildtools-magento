@@ -29,12 +29,6 @@ if [[ $1 == "version" || $1 == "--version" ]]; then
     exit 0
 fi
 
-# Check if WOODOO_VERSION and LATEST_WOODOO_VERSION are set
-if [[ -z "${WOODOO_VERSION}" || -z "${LATEST_WOODOO_VERSION}" ]]; then
-    echo -e "\nError: WOODOO_VERSION or LATEST_WOODOO_VERSION is not set\n"
-    exit 1
-fi
-
 # Check if the installed version is outdated
 if [[ ${WOODOO_VERSION} != "${LATEST_WOODOO_VERSION}" ]]; then
     echo -e "🧱 ${txtcyn}Installed Version ${bldred}${WOODOO_VERSION}${txtrst}"
