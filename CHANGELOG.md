@@ -6,15 +6,20 @@ All notable changes to this project will be documented in this file.
 
 ## UNRELEASED Changes
 
--   Updated to use `ddev add-on get` for versions of DDEV prior to v1.23.5
--   updated trunk plugin and linters
--   fix typo in several files
+### 1.8.6 (not released)
+
+- chore: add .gitignore and remove VSCode `settings.json`
+- chore: add coffee sponsorship message to frontend script
+- fix: update project architecture output to include OS information
+- fix: ensure script runs inside DDEV environment
+- fix: improve error handling for required files in frontend script
 
 ---
 
 ## Latest Release
 
-### 1.8.5
+
+### 1.8.5 (2025-03-10)
 
 -   fixed `ddev frontend` and missing selftest command
 
