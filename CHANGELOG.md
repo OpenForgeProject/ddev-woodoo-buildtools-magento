@@ -10,6 +10,10 @@ All notable changes to this project will be documented in this file.
 
 ## Latest Release
 
+### 1.8.7 (2025-03-11)
+
+- fix: Version check
+
 ### 1.8.6 (2025-03-11)
 
 - chore: add .gitignore and remove VSCode `settings.json`
