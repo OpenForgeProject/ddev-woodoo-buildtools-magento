@@ -8,6 +8,12 @@
 ## ExecRaw: true
 ## HostWorkingDir: false
 
+# Check if we're running in DDEV
+if [[ -z "${DDEV_PROJECT}" ]]; then
+    echo -e "\nError: This script must be run inside DDEV\n"
+    exit 1
+fi
+
 # shellcheck source=woodoo_components/variables
 source ".ddev/commands/web/woodoo_components/variables"
 echo -e "${bldblu}DDEV Woodoo Frontend Buildtools ${WOODOO_VERSION} for Magento ${txtrst}"
