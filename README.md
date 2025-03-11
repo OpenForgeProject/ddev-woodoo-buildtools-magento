@@ -11,11 +11,11 @@ _>> Build all your Magento themes at once, with Magic, build with Woodoo!_
 
 | Supported Versions                                                                                                        | Status                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| <img src="https://img.shields.io/badge/Magento_2_Hyvä_(all_Versions)-Supported-43A047" alt="All Hyvä Versions supported"> | ![project is maintained](https://img.shields.io/maintenance/yes/2024.svg) |
-| <img src="https://img.shields.io/badge/Magento_2_Hyvä_Fallback-Supported-43A047" alt="Hyvä Fallback is supported">        | ![project is maintained](https://img.shields.io/maintenance/yes/2024.svg) |
-| <img src="https://img.shields.io/badge/Magento_2.x-Supported-43A047" alt="Magento 2 Supported">                           | ![project is maintained](https://img.shields.io/maintenance/yes/2024.svg) |
-| <img src="https://img.shields.io/badge/MageOS-Supported-43A047" alt="MageOS is supported">                                | ![project is maintained](https://img.shields.io/maintenance/yes/2024.svg) |
-| <img src="https://img.shields.io/badge/Avanta B2B-Supported-43A047" alt="MageOS is supported">                            | ![project is maintained](https://img.shields.io/maintenance/yes/2024.svg) |
+| <img src="https://img.shields.io/badge/Magento_2_Hyvä_(all_Versions)-Supported-43A047" alt="All Hyvä Versions supported"> | ![project is maintained](https://img.shields.io/maintenance/yes/2025.svg) |
+| <img src="https://img.shields.io/badge/Magento_2_Hyvä_Fallback-Supported-43A047" alt="Hyvä Fallback is supported">        | ![project is maintained](https://img.shields.io/maintenance/yes/2025.svg) |
+| <img src="https://img.shields.io/badge/Magento_2.x-Supported-43A047" alt="Magento 2 Supported">                           | ![project is maintained](https://img.shields.io/maintenance/yes/2025.svg) |
+| <img src="https://img.shields.io/badge/MageOS-Supported-43A047" alt="MageOS is supported">                                | ![project is maintained](https://img.shields.io/maintenance/yes/2025.svg) |
+| <img src="https://img.shields.io/badge/Avanta B2B-Supported-43A047" alt="MageOS is supported">                            | ![project is maintained](https://img.shields.io/maintenance/yes/2025.svg) |
 
 ---
 
