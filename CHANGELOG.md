@@ -14,8 +14,7 @@ All notable changes to this project will be documented in this file.
 - fix: ensure script runs inside DDEV environment
 - fix: improve error handling for required files in frontend script
 - fix: improve cache clearing function with error handling
-
----
+- fix: implement caching for latest WOODOO version retrieval to prevent hitting Github API rate limits
 
 ## Latest Release
 
