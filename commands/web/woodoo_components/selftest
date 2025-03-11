@@ -18,7 +18,7 @@ function selftest() {
     if [[ -z ${PROJECT_ARCH} ]]; then
         echo -e "${txtcyn}Project Architecture               = ${txtylw}not set${txtrst}"
     else
-        echo -e "${txtcyn}Project Architecture               = ${txtgrn}${PROJECT_ARCH}${txtrst}"
+        echo -e "${txtcyn}Project Architecture               = ${txtgrn}${PROJECT_OS} with ${PROJECT_ARCH}${txtrst}"
     fi
 
     if [[ -z ${DDEV_COMPOSER_ROOT} ]]; then
