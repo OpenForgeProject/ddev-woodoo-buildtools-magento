@@ -51,3 +51,6 @@ for file in functions themes build watch selftest help; do
         exit 1
     fi
 done
+
+echo -e "\n${txtgrn}☕️ If you like this project, consider buying me a coffee:${txtrst}"
+echo -e "Visit ${txtcyn}https://github.com/sponsors/dermatz${txtrst} for more information. Have a nice coding day!\n"
