@@ -6,7 +6,11 @@ All notable changes to this project will be documented in this file.
 
 ## UNRELEASED Changes
 
-### 1.8.6 (not released)
+---
+
+## Latest Release
+
+### 1.8.6 (2025-03-11)
 
 - chore: add .gitignore and remove VSCode `settings.json`
 - chore: add coffee sponsorship message to frontend script
@@ -15,9 +19,6 @@ All notable changes to this project will be documented in this file.
 - fix: improve error handling for required files in frontend script
 - fix: improve cache clearing function with error handling
 - fix: implement caching for latest WOODOO version retrieval to prevent hitting Github API rate limits
-
-## Latest Release
-
 
 ### 1.8.5 (2025-03-10)
 
