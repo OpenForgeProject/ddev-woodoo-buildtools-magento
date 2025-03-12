@@ -11,6 +11,11 @@ All notable changes to this project will be documented in this file.
 
 ## Latest Release
 
+### 1.8.9 (2025-03-12)
+
+- fix: streamline variable sourcing and update version retrieval method
+- fix: repository source
+
 ### 1.8.8 (2025-03-12)
 
 - fix: improve readability and refactor clearStaticFiles and checkNpmOutdatedPackages functions
