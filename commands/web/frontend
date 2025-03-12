@@ -15,13 +15,7 @@ if [[ -z "${DDEV_PROJECT}" ]]; then
 fi
 
 # shellcheck source=woodoo_components/variables
-if [[ -f ".ddev/commands/web/woodoo_components/variables" ]]; then
-    source ".ddev/commands/web/woodoo_components/variables"
-else
-    echo -e "\nError: Required file .ddev/commands/web/woodoo_components/variables not found\n"
-    exit 1
-fi
-
+source ".ddev/commands/web/woodoo_components/variables"
 echo -e "${bldblu}DDEV Woodoo Frontend Buildtools ${WOODOO_VERSION} for Magento ${txtrst}"
 
 # Check if the user wants to see the version
@@ -29,7 +23,6 @@ if [[ $1 == "version" || $1 == "--version" ]]; then
     exit 0
 fi
 
-# Check if the installed version is outdated
 if [[ ${WOODOO_VERSION} != "${LATEST_WOODOO_VERSION}" ]]; then
     echo -e "🧱 ${txtcyn}Installed Version ${bldred}${WOODOO_VERSION}${txtrst}"
     echo -e "⭐️ ${txtcyn}The newer Version ${bldgrn}${LATEST_WOODOO_VERSION} is available!${txtrst}"
@@ -37,14 +30,14 @@ if [[ ${WOODOO_VERSION} != "${LATEST_WOODOO_VERSION}" ]]; then
 fi
 
 # Load all required files
-for file in functions themes build watch selftest help; do
-    if [[ -f ".ddev/commands/web/woodoo_components/$file" ]]; then
-        source ".ddev/commands/web/woodoo_components/$file"
-    else
-        echo -e "${txtred}\nError: Required file .ddev/commands/web/woodoo_components/$file not found\n${txtrst}"
-        exit 1
-    fi
-done
+source ".ddev/commands/web/woodoo_components/functions"
+source ".ddev/commands/web/woodoo_components/themes"
+source ".ddev/commands/web/woodoo_components/build"
+source ".ddev/commands/web/woodoo_components/watch"
+source ".ddev/commands/web/woodoo_components/selftest"
+
+## should be last source
+source ".ddev/commands/web/woodoo_components/help"
 
 echo -e "\n${txtgrn}☕️ If you like this project, consider buying me a coffee:${txtrst}"
 echo -e "${txtcyn}https://github.com/sponsors/dermatz${txtrst}\n"

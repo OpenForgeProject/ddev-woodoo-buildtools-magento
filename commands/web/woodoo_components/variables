@@ -2,20 +2,7 @@
 #ddev-generated - Do not modify this file; your modifications will be overwritten.
 
 WOODOO_VERSION="1.8.8"
-
-# Create cache directory in container-specific /var/tmp
-CACHE_DIR="/var/tmp/woodoo-cache"
-mkdir -p "${CACHE_DIR}"
-VERSION_CACHE="${CACHE_DIR}/latest_version"
-
-# Check if cache exists and is not older than 1h
-if [[ -f "${VERSION_CACHE}" ]] && [[ $(find "${VERSION_CACHE}" -mmin -60) ]]; then
-    LATEST_WOODOO_VERSION=$(cat "${VERSION_CACHE}")
-else
-    # Hole neue Version und speichere sie
-    LATEST_WOODOO_VERSION=$(curl -s https://api.github.com/repos/wodoo/buildtools/releases/latest | grep -Po '"tag_name": "\K[^"]*')
-    echo "${LATEST_WOODOO_VERSION}" > "${VERSION_CACHE}"
-fi
+LATEST_WOODOO_VERSION=$(curl -s https://api.github.com/repos/OpenForgeProject/ddev-woodoo-buildtools-magento/releases/latest | grep tag_name | cut -d '"' -f 4)
 
 PROJECT_CONFIG_FILE=".ddev/config-themes.yaml"
 
