@@ -103,7 +103,8 @@ function installGrunt() {
 # Function to check if Hyva theme is present in the specified build path
 # Parameters:
 #   $1: The build path
-
+# Returns:
+#   Sets the HYVA variable to true if the Hyva theme is present, otherwise false.
 function checkHyva() {
     HYVA=false
     local BUILD_PATH=$1
@@ -114,9 +115,6 @@ function checkHyva() {
 }
 
 # Function to read themes from config-themes.yaml and store them in THEMES_IN_CONFIG variable
-# Parameters:
-#   None
-
 function readThemesInConfig() {
     THEMES_IN_CONFIG=""
     if [[ ! -f ${PROJECT_CONFIG_FILE} ]]; then
@@ -162,7 +160,7 @@ function checkThemePathExists() {
     local PATH_ERROR=false
 
     if [[ -z ${THEMES_IN_CONFIG} ]]; then
-        echo -e "\n${txtred}No Themes found in ${PROJECT_CONFIG_FILE}}${txtrst}\n"
+        echo -e "\n${txtred}No Themes found in ${PROJECT_CONFIG_FILE}${txtrst}\n"
     else
         if [[ $1 != "silent" ]]; then
             # Check if only 1 theme is configured
@@ -213,7 +211,7 @@ function checkThemePathExists() {
         # if checkThemePathExists has an error, it will exit the script
         if ${PATH_ERROR}; then
             echo -e "\n${txtylw}${ICON_WARNING} Some theme paths are invalid! Please check your ${PROJECT_CONFIG_FILE} ${txtrst}\n"
-            exit 0
+            exit 1
         else
             echo -e "\n${txtgrn}${ICON_SUCCESS} All theme paths are valid!${txtrst}\n"
         fi

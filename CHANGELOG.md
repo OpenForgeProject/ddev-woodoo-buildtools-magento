@@ -8,7 +8,8 @@ All notable changes to this project will be documented in this file.
 
 - fix: improve readability and refactor clearStaticFiles and checkNpmOutdatedPackages functions
 - fix: update .gitignore to include .vscode/settings.json
-
+- fix: improve documentation and error handling in theme functions
+- fix: update grunt installation command and improve error handling in theme checks
 ---
 
 ## Latest Release

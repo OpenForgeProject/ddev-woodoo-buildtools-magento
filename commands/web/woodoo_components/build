@@ -19,7 +19,7 @@ function buildMagentoDefault() {
         echo -e "${txtcyn}${ICON_SUCCESS} Grunt is installed${txtrst}"
     else
         echo -e "\n\n${txtcyn}${ICON_ERROR} Install missing Grunt${txtrst}\n\n"
-        npm install grunt # install grunt locally in ddev container for the project
+        npx install grunt # install grunt locally in ddev container for the project
 
         if ! command -v grunt &>/dev/null; then
             sudo npm install grunt -g
@@ -43,7 +43,7 @@ function buildMagentoDefault() {
         echo -e "${txtgrn}${ICON_SUCCESS} Grunt tasks finished${txtrst}\n\n"
         echo -e "\n${txtgrn}${ICON_SUCCESS}${bldcyn} Theme Build for ${txtpur}${THEME_NAME}${txtcyn} finished${txtrst}\n\n\n"
     else
-        echo -e "\n\n${tsxtred}${ICON_ERROR} Grunt task failed. Try to repair it for you.${txtrst}\n\n"
+        echo -e "\n\n${txtred}${ICON_ERROR} Grunt task failed. Try to repair it for you.${txtrst}\n\n"
         rm -rf "${DDEV_COMPOSER_ROOT}"/node_modules
         npm ci
 
