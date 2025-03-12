@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file.
 ## UNRELEASED Changes
 
 - fix: improve readability and refactor clearStaticFiles and checkNpmOutdatedPackages functions
+- fix: update .gitignore to include .vscode/settings.json
 
 ---
 
@@ -18,7 +19,6 @@ All notable changes to this project will be documented in this file.
 
 ### 1.8.6 (2025-03-11)
 
-- chore: add .gitignore and remove VSCode `settings.json`
 - chore: add coffee sponsorship message to frontend script
 - fix: update project architecture output to include OS information
 - fix: ensure script runs inside DDEV environment
