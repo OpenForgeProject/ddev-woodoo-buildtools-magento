@@ -1,20 +1,19 @@
 #!/bin/bash
 #ddev-generated - Do not modify this file; your modifications will be overwritten.
 
-# Builds the Magento theme specified by the first argument
-# This function checks for necessary dependencies like Node modules and Grunt, installs them if missing, and then runs Grunt tasks to build the theme.
+# Build Magento theme and install required dependencies
 function buildMagentoDefault() {
     THEME_NAME=$1
     echo -e "${txtcyn}Start building ${txtpur}${THEME_NAME}${txtcyn} Theme ... please wait!\n${txtrst}"
 
-    # check if node_modules exist
+    # Install Node dependencies if missing
     if [[ ! -d "${DDEV_COMPOSER_ROOT}/node_modules/" ]]; then
         echo -e "${txtylw}${ICON_ERROR} Install missing Node Dependencies${txtrst}"
         cd "${DDEV_COMPOSER_ROOT}" || exit
         npm ci
     fi
 
-    # check if grunt exist
+    # Install Grunt if missing
     if "${DDEV_COMPOSER_ROOT}/node_modules/.bin/grunt" --version &>/dev/null; then
         echo -e "${txtcyn}${ICON_SUCCESS} Grunt is installed${txtrst}"
     else
@@ -34,11 +33,8 @@ function buildMagentoDefault() {
 
     runGruntTasks
 
-    # check if grunt tasks finished successfully
-    # This condition checks if the exit status of the previous command is equal to 0 (which means success) and then prints a success message.
-    # If the exit status is not 0, it tries to repair the issue by removing the node_modules directory and reinstalling the dependencies.
-    # After that, it runs the Grunt tasks again and checks the exit status again.
-
+    # Handle Grunt task results
+    # If failed: Attempt repair by reinstalling dependencies
     if [[ $? -eq 0 ]]; then
         echo -e "${txtgrn}${ICON_SUCCESS} Grunt tasks finished${txtrst}\n\n"
         echo -e "\n${txtgrn}${ICON_SUCCESS}${bldcyn} Theme Build for ${txtpur}${THEME_NAME}${txtcyn} finished${txtrst}\n\n\n"
@@ -61,14 +57,7 @@ function buildMagentoDefault() {
     fi
 }
 
-# Builds the Hyvä theme specified by the first argument
-# This function checks for necessary dependencies like Node modules, installs them if missing,
-# and then runs the appropriate npm build command based on the Hyvä version.
-
-# Parameters:
-# $1: The path to the Hyvä theme
-# $2: The theme code of the Hyvä theme
-
+# Build Hyva theme with appropriate version handling
 function buildHyva() {
     local HYVA_PATH=$1
     local HYVA_NAME=$2
@@ -93,10 +82,10 @@ function buildHyva() {
     echo -e "\n${txtgrn}${ICON_SUCCESS}${bldcyn} Hyvä Theme ${txtpur}(v${HYVA_VERSION})${txtcyn} build for ${txtpur}${HYVA_NAME}${txtcyn} done!${txtrst}\n\n\n"
 }
 
-# Build all themes in config-themes.yaml
+# Build specified themes or all themes listed in config-themes.yaml
 if [[ ($1 == "build" || $1 == "b") && ($2 == "" || $2 == "-f") ]]; then
 
-    # Check all themes in config-themes.yaml to create a list of available themes
+    # Get list of available themes from config-themes.yaml and validate their existence
     checkThemePathExists silent
 
     if [[ $(countThemesinConfig) -lt 1 ]]; then
@@ -109,21 +98,21 @@ if [[ ($1 == "build" || $1 == "b") && ($2 == "" || $2 == "-f") ]]; then
         echo -e "${txtgrn}$(countThemesinConfig) Themes are ready to build:${txtrst}\n"
     fi
 
-    # if more then one theme is available, ask if all themes should be build
+    # If more than one theme is available, prompt for theme selection unless force flag (-f) is used
     if [[ $(countThemesinConfig) -gt 1 && $2 != '-f' ]]; then
         THEMES_TO_BUILD=$(gum choose --cursor-prefix "[ ] " --unselected-prefix "[ ] " --selected-prefix "[✓] " --no-limit $THEMES_IN_CONFIG)
     else
         THEMES_TO_BUILD=${THEMES_IN_CONFIG}
     fi
 
-    # Build all themes available in config-themes.yaml
+    # Build selected themes from config-themes.yaml (all themes if -f flag is used)
     for THEME_CODE in ${THEMES_TO_BUILD}; do
         THEME_TO_BUILD=$(echo $(grep -oP '(?<='$THEME_CODE': ).*' $PROJECT_CONFIG_FILE) | cut -d ' ' -f 1 | sed 's/"//g')
 
-        # checks to figure out if it is a Hyvä Theme
+        # Check if the theme is a Hyvä theme
         checkHyva "${THEME_TO_BUILD}"
 
-        # try to build Hyvä Theme, if not build as Magento Default Theme
+        # Determine if it's a Hyvä theme and build accordingly, otherwise build as default Magento theme
         if [[ ${HYVA} == true ]]; then
             buildHyva "${THEME_TO_BUILD}" "${THEME_CODE}"
         else
@@ -138,13 +127,13 @@ if [[ ($1 == "build" || $1 == "b") && ($2 == "" || $2 == "-f") ]]; then
 
 fi
 
-# Build a specific Theme
+# Build a specific theme when provided as an argument
 if [[ ($1 == "build" || $1 == "b") && $2 != "" && $2 != "-f" ]]; then
 
-    # Check get all themes from config-themes.yaml
+    # Retrieve all themes defined in config-themes.yaml
     checkThemePathExists
 
-    # check if 2nd parameter ($2) is a valid theme code
+    # Validate if the provided theme code ($2) exists in the configuration
     if [[ ! " ${THEMES_IN_CONFIG[*]} " =~ ${2} ]]; then
         echo -e "\n${txtred}${ICON_ERROR} ERROR! ${undred}${2}${txtred} is not listed in ${undred}${PROJECT_CONFIG_FILE}${txtred}. Please check again or choose one of these:${txtrst}"
         echo -e "${txtcyn}\nAvailable Themes:${txtrst}"
@@ -153,15 +142,16 @@ if [[ ($1 == "build" || $1 == "b") && $2 != "" && $2 != "-f" ]]; then
         exit 0
     else
         THEME_TO_BUILD=$(grep -oP "(?<=${2}: ).*" "${PROJECT_CONFIG_FILE}" | cut -d ' ' -f 1 | tr -d '"')
-
         checkHyva "${THEME_TO_BUILD}"
 
+        # Determine if it's a Hyvä theme and build accordingly, otherwise build as default Magento theme
         if [[ ${HYVA} == true ]]; then
             buildHyva "${THEME_TO_BUILD}" "$2"
         else
             buildMagentoDefault "$2"
         fi
 
+        # Clear Magento Cache and Static Files
         clearCache
         clearStaticFiles
 

@@ -10,6 +10,8 @@ All notable changes to this project will be documented in this file.
 - fix: update .gitignore to include .vscode/settings.json
 - fix: improve documentation and error handling in theme functions
 - fix: update grunt installation command and improve error handling in theme checks
+- fix: improve function documentation and comments for clarity
+
 ---
 
 ## Latest Release
