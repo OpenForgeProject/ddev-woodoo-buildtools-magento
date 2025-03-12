@@ -6,6 +6,8 @@ All notable changes to this project will be documented in this file.
 
 ## UNRELEASED Changes
 
+- fix: improve readability and refactor clearStaticFiles and checkNpmOutdatedPackages functions
+
 ---
 
 ## Latest Release
