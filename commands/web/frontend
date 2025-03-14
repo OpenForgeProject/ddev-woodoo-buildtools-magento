@@ -39,5 +39,5 @@ source ".ddev/commands/web/woodoo_components/selftest"
 ## should be last source
 source ".ddev/commands/web/woodoo_components/help"
 
-echo -e "\n${txtgrn}☕️ If you like this project, consider buying me a coffee:${txtrst}"
+echo -e "\n${txtgrn}❤️ If you find this project helpful, consider becoming a sponsor:${txtrst}"
 echo -e "${txtcyn}https://github.com/sponsors/dermatz${txtrst}\n"
