@@ -6,6 +6,7 @@ All notable changes to this project will be documented in this file.
 
 ## UNRELEASED Changes
 
+- change: change support message
 
 ---
 
