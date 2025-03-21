@@ -1,0 +1,45 @@
+name: Magento Theme Build
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v3
+
+      - name: Set up Homebrew
+        id: set-up-homebrew
+        uses: Homebrew/actions/setup-homebrew@master
+
+      - name: Environment setup
+        run: |
+          brew install bats-core mkcert
+          mkcert -install
+
+      - name: Install ddev
+        run: brew install ddev/ddev/ddev
+
+      - name: Set up ddev
+        run: |
+          ddev config --project-type=magento2 --docroot=pub --create-docroot
+          ddev start
+
+      - name: Install Magento
+        run: |
+          ddev exec composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition:2.4.3-p1 .
+          ddev exec bin/magento setup:install --base-url=http://magento2.ddev.site --db-host=db --db-name=db --db-user=db --db-password=db --admin-firstname=admin --admin-lastname=admin --admin-email=admin@example.com --admin-user=admin --admin-password=admin123 --language=en_US --currency=USD --timezone=America/Chicago --use-rewrites=1
+
+      - name: Run theme build commands
+        run: |
+          ddev exec bin/magento setup:upgrade
+          ddev exec bin/magento setup:di:compile
+          ddev exec bin/magento setup:static-content:deploy -f
