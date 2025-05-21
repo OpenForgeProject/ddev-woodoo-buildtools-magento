@@ -38,7 +38,7 @@ jobs:
             #        ddev_version: [stable, edge, HEAD, PR]
             fail-fast: false
 
-        runs-on: ubuntu-20.04
+        runs-on: ubuntu-22.04
 
         steps:
             - uses: actions/checkout@v3
@@ -81,8 +81,3 @@ jobs:
 
             - name: tests
               run: bats tests
-
-            # keepalive-workflow adds a dummy commit if there's no other action here, keeps
-            # GitHub from turning off tests after 60 days
-            - uses: gautamkrishnar/keepalive-workflow@v1
-              if: matrix.ddev_version == 'stable'
