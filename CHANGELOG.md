@@ -7,6 +7,8 @@ All notable changes to this project will be documented in this file.
 ## UNRELEASED Changes
 
 - change: change support message
+- update: GitHub action test to use `ubuntu-22.04`
+- remove: `gautamkrishnar/keepalive-workflow@v1` step
 
 ---
 
