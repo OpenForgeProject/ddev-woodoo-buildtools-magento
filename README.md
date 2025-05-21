@@ -166,7 +166,7 @@ Feel free to send your improvements as [Pull request](https://github.com/OpenFor
 
 ---
 
-### Watch out our Contributers, Tester & Supporter
+### Watch out our Contributors, Tester & Supporter
 
 -   [Mathias Elle | @dermatz](https://github.com/dermatz) (Maintainer)
 -   [Thomas Hauschild | @Morgy93](https://github.com/Morgy93)

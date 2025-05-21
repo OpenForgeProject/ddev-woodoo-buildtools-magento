@@ -62,7 +62,7 @@ All notable changes to this project will be documented in this file.
 -   added documentation for color assignments in `CONTRIBUTING.md` to standardize the use of color variables in bash scripts
 -   added detailed color definitions and a usage example in the new "Color Assignments" section
 -   added Github Action to check if Pull Request contains `CHANGELOG.md` updates
--   added documentation for .vscode settings end supported extensions
+-   added documentation for .vscode settings and supported extensions
 -   added Discord invite link to `README.md` and `CONTRIBUTING.md`
 -   changed `MIT-LICENSES.md` to `LICENSE` and set this tool under GNU GENERAL PUBLIC LICENSE 3.0
 -   fixed issue to check and install grunt correctly if it is missing [https://github.com/dermatz/ddev-woodoo-buildtools-magento/issues/50]
@@ -76,7 +76,7 @@ All notable changes to this project will be documented in this file.
 -   updated `commands/web/woodoo_components/help` to list the aliases 'ddev f' and 'ddev fe' for the frontend commands [@Morgy93]
 -   refactored 'commands/web/woodoo_components/functions` to add all woodoo functions to this file
 -   remove `commands/web/woodoo_components/checks` (was moved to `functions`)
--   remove not valid characters in `.vscode/settings.json`
+-   remove invalid characters in `.vscode/settings.json`
 
 ### 1.7.0
 
@@ -113,7 +113,7 @@ This release has **no breaking changes** and is fully compatible with existing `
 
 -   improve build process with shorter CLI outputs
 -   improve code quality by fixing linting issues
--   improve changelog formatting
+-   improved changelog formatting
 -   set `HostWorkingDir` to `false` [#24](https://github.com/dermatz/ddev-woodoo-buildtools-magento/pull/24) - Thanks to [@Morgy93]
 
 ---
@@ -154,7 +154,7 @@ This release has **no breaking changes** and is fully compatible with existing `
 
 -   add command parameter `ddev frontend-update -dev` to install latest dev features from main-branch ( _can be unstable!_ )
 -   formatting readme.md
--   update codestyle and improved lints ( _Shoutout: trunk.io_ ;-))
+-   update codestyle and improved linting ( _Shoutout: trunk.io_ ;-))
 
 ---
 
