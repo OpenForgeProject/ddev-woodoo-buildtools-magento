@@ -14,6 +14,14 @@ All notable changes to this project will be documented in this file.
 
 ## Latest Release
 
+### 1.8.10 (2025-05-22)
+
+- fix: typo
+- fix: variable typo
+- fix: licencse links
+- fix: readme alt-tags
+- add: Magefoge hint
+
 ### 1.8.9 (2025-03-12)
 
 - fix: streamline variable sourcing and update version retrieval method

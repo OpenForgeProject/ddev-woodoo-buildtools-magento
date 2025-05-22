@@ -39,5 +39,5 @@ source ".ddev/commands/web/woodoo_components/selftest"
 ## should be last source
 source ".ddev/commands/web/woodoo_components/help"
 
-echo -e "\n${txtgrn}❤️ If you find this project helpful, consider becoming a sponsor:${txtrst}"
-echo -e "${txtcyn}https://github.com/sponsors/dermatz${txtrst}\n"
+echo -e "\n${bldgrn}🚀 Good News:${txtrst} ${txtgrn}Woodoo was renamed and is also available as a composer Magento Module:${txtrst}"
+echo -e "${txtcyn}https://github.com/OpenForgeProject/mageforge${txtrst}"
