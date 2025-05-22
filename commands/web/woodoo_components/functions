@@ -159,7 +159,7 @@ function checkThemePathExists() {
                 # Check whether the line with "Themes:" begins
                 if [[ ${line} =~ ^themes: ]]; then
                     while read -r next_line; do
-                        THEME_PATHES_VALID=null
+                        THEME_PATHS_VALID=null
                         # Check whether the next line begins with "-"
                         if [[ -n ${next_line} && ${next_line} =~ ^- ]]; then
                             if [[ ${next_line} =~ ${THEME_CODE} ]]; then
@@ -169,17 +169,17 @@ function checkThemePathExists() {
                                     if [[ $1 != "silent" ]]; then
                                         echo -e "${txtred}${ICON_ERROR} Theme-Path ${txtpur}${THEME_CODE} ${txtred}has not been configured yet.${txtrst}"
                                     fi
-                                    THEME_PATHES_VALID=false
+                                    THEME_PATHS_VALID=false
                                     PATH_ERROR=true
                                 else
-                                    # if $THEME_PATHES_VALID not false and registration.php exists in $THEME_PATH
-                                    if [[ ${THEME_PATHES_VALID} != false && -f ${THEME_PATH}/registration.php ]]; then
-                                        THEME_PATHES_VALID=true
+                                    # if $THEME_PATHS_VALID not false and registration.php exists in $THEME_PATH
+                                    if [[ ${THEME_PATHS_VALID} != false && -f ${THEME_PATH}/registration.php ]]; then
+                                        THEME_PATHS_VALID=true
                                         if [[ $1 != "silent" ]]; then
                                             echo -e "${txtgrn}${ICON_SUCCESS} ${txtcyn}Theme ${txtpur}${THEME_CODE} ${txtcyn}is correct.${txtrst}"
                                         fi
                                     else
-                                        THEME_PATHES_VALID=false
+                                        THEME_PATHS_VALID=false
                                         PATH_ERROR=true
                                         echo -e "${txtred}${ICON_ERROR} Theme-Path ${txtpur}${THEME_CODE} ${txtred}has not been configured correctly.${txtrst}"
                                     fi
