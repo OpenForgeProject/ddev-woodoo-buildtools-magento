@@ -15,7 +15,7 @@ _>> Build all your Magento themes at once, with Magic, build with Woodoo!_
 | <img src="https://img.shields.io/badge/Magento_2_Hyvä_Fallback-Supported-43A047" alt="Hyvä Fallback is supported">        | ![project is maintained](https://img.shields.io/maintenance/yes/2025.svg) |
 | <img src="https://img.shields.io/badge/Magento_2.x-Supported-43A047" alt="Magento 2 Supported">                           | ![project is maintained](https://img.shields.io/maintenance/yes/2025.svg) |
 | <img src="https://img.shields.io/badge/MageOS-Supported-43A047" alt="MageOS is supported">                                | ![project is maintained](https://img.shields.io/maintenance/yes/2025.svg) |
-| <img src="https://img.shields.io/badge/Avanta B2B-Supported-43A047" alt="MageOS is supported">                            | ![project is maintained](https://img.shields.io/maintenance/yes/2025.svg) |
+| <img src="https://img.shields.io/badge/Avanta B2B-Supported-43A047" alt="Avanta B2B is supported">                            | ![project is maintained](https://img.shields.io/maintenance/yes/2025.svg) |
 
 ---
 
@@ -34,7 +34,7 @@ _>> Build all your Magento themes at once, with Magic, build with Woodoo!_
 
 ### Installation
 
-**1 . Get the latest Version with following command in your ddev project root**
+**1. Get the latest Version with following command in your ddev project root**
 
 ##### Latest stable version (recommended)
 
@@ -50,7 +50,7 @@ For earlier versions of DDEV run
 ddev get OpenForgeProject/ddev-woodoo-buildtools-magento
 ```
 
-##### Latest Developer-Preview (Main-Branch - unreleased) - can be instable!
+##### Latest Developer-Preview (Main-Branch - unreleased) - can be unstable!
 
 For DDEV v1.23.5 or above run
 
@@ -68,7 +68,7 @@ ddev get https://github.com/OpenForgeProject/ddev-woodoo-buildtools-magento/arch
 
 **2. Start Woodoo INIT to update your ./ddev/config.yaml**
 
-Automatically connect to your ddev database to list all available themes and add these to `.ddev/config-themes.yaml`. Add theme path if possible (can be edit later)
+Automatically connect to your ddev database to list all available themes and add these to `.ddev/config-themes.yaml`. Add theme path if possible (can be edited later)
 
 ```shell
 ddev frontend init
@@ -81,7 +81,7 @@ Open `.ddev/config-themes.yaml` and specify relative path to the theme based on 
 
 ## Update Woodoo to latest stable Version
 
-If a newer Release is available you will be notified in you ClI about new versions. To update use `ddev frontend-update` for the latest stable Version.
+If a newer Release is available you will be notified in your CLI about new versions. To update use `ddev frontend-update` for the latest stable Version.
 
 ```shell
   ddev frontend-update
@@ -89,7 +89,7 @@ If a newer Release is available you will be notified in you ClI about new versio
 
 ## Get Developer Preview
 
-If you want to get the latest developer preview (can be instable) use `ddev frontend-update -dev`
+If you want to get the latest developer preview (can be unstable) use `ddev frontend-update -dev`
 
 ```shell
   ddev frontend-update -dev
@@ -166,7 +166,7 @@ Feel free to send your improvements as [Pull request](https://github.com/OpenFor
 
 ---
 
-### Watch out our Contributors, Tester & Supporter
+### Watch out for our Contributors, Testers & Supporters
 
 -   [Mathias Elle | @dermatz](https://github.com/dermatz) (Maintainer)
 -   [Thomas Hauschild | @Morgy93](https://github.com/Morgy93)

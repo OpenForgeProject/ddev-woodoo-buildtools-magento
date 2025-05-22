@@ -25,8 +25,8 @@
 
 ## License
 
-a) This project is licensed under the MIT License - see the [LICENSE](./MIT-LICENSES.md) file for details
-b) All of your contributions will be also licensed under the MIT License
+a) This project is licensed under the GNU General Public License v3.0 - see the [LICENSE](./LICENSE) file for details
+b) All of your contributions will be also licensed under the GNU General Public License v3.0
 
 ---
 
@@ -83,7 +83,7 @@ bldcyn='\033[1;36m' # Cyan
 bldwht='\033[1;37m' # White
 
 # Underline
-unkblk='\033[4;30m' # Black
+undblk='\033[4;30m' # Black
 undred='\033[4;31m' # Red
 undgrn='\033[4;32m' # Green
 undylw='\033[4;33m' # Yellow
@@ -137,7 +137,7 @@ For example: `#123 - Commit Message ...`
 -   Write clear and concise comments
 -   Avoid global variables, use `local VARIABLE` whenever possible
 -   Use functions to encapsulate code
--   Add Description to functions and describe parameters
+-   Add description to functions and describe parameters
 -   Test your code thoroughly before submitting
 
 ---

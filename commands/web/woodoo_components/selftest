@@ -34,7 +34,7 @@ function selftest() {
     fi
 
     if [[ -z ${PROJECT_NODEJS_VERSION} ]]; then
-        echo -e "${txtcyn}Project PHP Version                = ${txtylw}not set${txtrst}"
+        echo -e "${txtcyn}Project Node.js Version              = ${txtylw}not set${txtrst}"
     else
         if [[ ${PROJECT_NODEJS_VERSION} != "${LATEST_LTS_VERSION}" ]]; then
             echo -e "${txtcyn}Project NODE Version               = ${txtgrn}${PROJECT_NODEJS_VERSION}${txtylw} (latest LTS: ${LATEST_LTS_VERSION}, see ${undylw}https://nodejs.org${txtylw})${txtrst} "

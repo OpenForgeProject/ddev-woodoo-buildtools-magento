@@ -74,7 +74,7 @@ All notable changes to this project will be documented in this file.
 -   updated `README.md` to mention the aliases 'ddev f' and 'ddev fe' for the frontend commands [@Morgy93]
 -   updated `README.md` with usage examples [@Morgy93]
 -   updated `commands/web/woodoo_components/help` to list the aliases 'ddev f' and 'ddev fe' for the frontend commands [@Morgy93]
--   refactored 'commands/web/woodoo_components/functions` to add all woodoo functions to this file
+-   refactored 'commands/web/woodoo_components/functions' to add all woodoo functions to this file
 -   remove `commands/web/woodoo_components/checks` (was moved to `functions`)
 -   remove invalid characters in `.vscode/settings.json`
 
@@ -85,7 +85,7 @@ All notable changes to this project will be documented in this file.
 -   updated `.trunk` linter settings
 -   fixed shell linting issues in several files
 -   improved `ddev frontend` Command with ddev system information
--   improved Hyva Taks sort order ( _NPM Check > Node_Modules Check > reinstall if required > Build > Cache refresh_ ..)
+-   improved Hyva Tasks sort order ( _NPM Check > Node_Modules Check > reinstall if required > Build > Cache refresh_ ..)
 -   refactored grunt task functions for default Magento projects
 -   refactored Hyva build functions
 -   move all repeatable tasks/functions into new `functions` file
@@ -132,7 +132,7 @@ This release has **no breaking changes** and is fully compatible with existing `
 -   add health check to bats test - Thanks to [@Morgy93](https://github.com/Morgy93)
 -   add `.editorconfig` to comply with current indent config for trunk CI check - Thanks to [@Morgy93](https://github.com/Morgy93)
 -   fix bash linting issues
--   add silent mode for watch task to minify the text output to focus on the important parts
+-   add silent mode for watch task to minimize the text output to focus on the important parts
 -   update help texts
 
 ---
@@ -180,12 +180,12 @@ This release has **no breaking changes** and is fully compatible with existing `
 ### 1.4.0
 
 -   add new Feature to update setup a new ddev config file `.ddev/config-themes.yaml` to store theme specific settings
--   extend `ddev frontend` command to update automaticly theme-settings from `config.yaml` to `config-themes.yaml`
+-   extend `ddev frontend` command to automatically update theme-settings from `config.yaml` to `config-themes.yaml`
 -   improved Codestyle and Codequality
 -   add global variables to functions
 -   add new dependency `Morgy93/ddev-gum` to add global gum support (`ddev restart` required) - [@Morgy93](https://github.com/Morgy93)
 -   add Context Menus to `ddev frontend init`, `ddev frontend build` and `ddev frontend watch` commands
--   now you are able to add and remove themes in the context menu to build or watch. The config-file will be updated automaticly.
+-   now you are able to add and remove themes in the context menu to build or watch. The config-file will be updated automatically.
 
 ---
 
@@ -201,7 +201,7 @@ This release has **no breaking changes** and is fully compatible with existing `
 
 #### New Features (Hyvä 1.1.x Support)
 
--   Hyvä 1.1.x Support for Build-process: `build` check if hyvä themeversion is > 1.1.x to change build command automaticly (https://github.com/dermatz/ddev-woodoo-buildtools-magento/issues/11 by [@therouv](https://github.com/therouv))
+-   Hyvä 1.1.x Support for Build-process: `build` check if Hyvä theme version is > 1.1.x to change build command automatically (https://github.com/dermatz/ddev-woodoo-buildtools-magento/issues/11 by [@therouv](https://github.com/therouv))
 
 #### Changes
 
@@ -216,14 +216,14 @@ This release has **no breaking changes** and is fully compatible with existing `
 -   update README.md
 -   update CHANGELOG.md
 -   update CONTRIBUTING.md
--   update typo in hyva checks [https://github.com/dermatz/ddev-woodoo-buildtools-magento/pull/9 by [@torhoehn](https://github.com/torhoehn)]
+-   update typo in Hyva checks [https://github.com/dermatz/ddev-woodoo-buildtools-magento/pull/9 by [@torhoehn](https://github.com/torhoehn)]
 -   update help command
 
 #### New Features
 
 -   run `ddev frontend watch` without a theme-code, if just 1 theme was added in config.yaml (https://github.com/dermatz/ddev-woodoo-buildtools-magento/issues/2)
--   build/watch command start `init` automaticly if no theme was configured before (https://github.com/dermatz/ddev-woodoo-buildtools-magento/issues/6)
--   add a message to the DDEV Woodoo Command Headline was added, if a Update is available (https://github.com/dermatz/ddev-woodoo-buildtools-magento/issues/4)
+-   build/watch command start `init` automatically if no theme was configured before (https://github.com/dermatz/ddev-woodoo-buildtools-magento/issues/6)
+-   add a message to the DDEV Woodoo Command Headline was added, if an Update is available (https://github.com/dermatz/ddev-woodoo-buildtools-magento/issues/4)
 -   Build all themes (force) without yes/no question with `ddev frontend build -f` (https://github.com/dermatz/ddev-woodoo-buildtools-magento/issues/1)
 
 ---
@@ -234,7 +234,7 @@ This release has **no breaking changes** and is fully compatible with existing `
 -   update README.md Feature List and Update instructions
 -   change Wording in README.md and CHANGELOG.md
 -   change Wording in `selfcheck`
--   improve Errorhandling in theme path validation (during `ddev frontend themes`)
+-   improve Error handling in theme path validation (during `ddev frontend themes`)
 
 ---
 

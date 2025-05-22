@@ -52,7 +52,7 @@ bldcyn='\033[1;36m' # Cyan
 bldwht='\033[1;37m' # White
 
 # Underline
-unkblk='\033[4;30m' # Black
+undblk='\033[4;30m' # Black
 undred='\033[4;31m' # Red
 undgrn='\033[4;32m' # Green
 undylw='\033[4;33m' # Yellow
