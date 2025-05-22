@@ -26,7 +26,7 @@
 ## License
 
 a) This project is licensed under the GNU General Public License v3.0 - see the [LICENSE](./LICENSE) file for details
-b) All of your contributions will be also licensed under the GNU General Public License v3.0
+b) All of your contributions will be also licensed under the GNU GPL v3.0
 
 ---
 
