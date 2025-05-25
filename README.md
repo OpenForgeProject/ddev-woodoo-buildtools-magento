@@ -178,3 +178,18 @@ Feel free to send your improvements as [Pull request](https://github.com/OpenFor
 ## License
 
 [License](./LICENSE) | by [Mathias Elle](https://www.linkedin.com/in/mathias-elle-842783102/)
+
+## GitHub Action for Checking Theme Build Commands
+
+We have added a new GitHub action to set up a Magento demo store and check theme build commands. This action runs on `push` and `pull_request` events.
+
+### Usage
+
+To use the new GitHub action, follow these steps:
+
+1. Ensure that the `.github/workflows/magento-theme-build.yml` file is present in your repository.
+2. The action will automatically run on `push` and `pull_request` events.
+
+The action includes steps to set up ddev, install Magento, and run theme build commands.
+
+For more details, refer to the `.github/workflows/magento-theme-build.yml` file in your repository.
