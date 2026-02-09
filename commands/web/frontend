@@ -18,6 +18,7 @@ fi
 source ".ddev/commands/web/woodoo_components/variables"
 echo -e "${bldblu}DDEV Woodoo Frontend Buildtools ${WOODOO_VERSION} for Magento ${txtrst}"
 
+
 # Check if the user wants to see the version
 if [[ $1 == "version" || $1 == "--version" ]]; then
     exit 0
@@ -39,5 +40,13 @@ source ".ddev/commands/web/woodoo_components/selftest"
 ## should be last source
 source ".ddev/commands/web/woodoo_components/help"
 
-echo -e "\n${bldgrn}🚀 Good News:${txtrst} ${txtgrn}Woodoo was renamed and is also available as a composer Magento Module:${txtrst}"
+echo -e "\n${bldred}######################################################################${txtrst}"
+echo -e "${bldred}#                                                                    #${txtrst}"
+echo -e "${bldred}#   ⚠️  WARNING: THIS TOOL IS DEPRECATED                              #${txtrst}"
+echo -e "${bldred}#                                                                    #${txtrst}"
+echo -e "${bldred}#   Development continues as composer Module at:                     #${txtrst}"
+echo -e "${bldred}#   https://github.com/OpenForgeProject/mageforge                    #${txtrst}"
+echo -e "${bldred}#                                                                    #${txtrst}"
+echo -e "${bldred}######################################################################${txtrst}\n"
+
 echo -e "${txtcyn}https://github.com/OpenForgeProject/mageforge${txtrst}"

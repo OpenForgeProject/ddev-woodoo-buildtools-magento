@@ -4,15 +4,11 @@ All notable changes to this project will be documented in this file.
 
 ---
 
-## UNRELEASED Changes
-
-- change: change support message
-- update: GitHub action test to use `ubuntu-22.04`
-- remove: `gautamkrishnar/keepalive-workflow@v1` step
-
----
-
 ## Latest Release
+
+### 1.9.0 (2026-06-09)
+
+- add: deprecation notice for `ddev frontend` command and hint to use [MageForge](https://github.com/OpenForgeProject/mageforge) instead
 
 ### 1.8.10 (2025-05-22)
 
